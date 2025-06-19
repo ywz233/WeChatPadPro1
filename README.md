@@ -161,7 +161,7 @@ WeChatPadPro 提供了豐富的 WeChat 功能控制命令，包括：
 
 ### 💼 微信付費專業群
 
-<img src="./static/qrcode/291c1d65b3828af40c62ddf7c48c2bd.jpg" width="180" alt="微信付費入群二維碼">
+<img src="https://raw.githubusercontent.com/WeChatPadPro/WeChatPadPro/refs/heads/main/static/qrcode/%E5%9B%BE%E7%89%87_20250619211139.jpg" width="180" alt="微信付費入群二維碼">
 
 🔒 **掃碼付費加入專業交流群**
 - VIP技術支持
