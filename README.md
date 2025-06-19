@@ -169,7 +169,7 @@ WeChatPadPro 提供了豐富的 WeChat 功能控制命令，包括：
 - 優先解決問題
 - 高級使用技巧分享
 </td>
-<td width="50%" align="center">
+<td width="33%" align="center">
 
 ### 🔔 釘釘交流群
 
@@ -180,7 +180,8 @@ WeChatPadPro 提供了豐富的 WeChat 功能控制命令，包括：
 - 問題解答
 - 使用經驗分享
 
-</td>
+<td width="33%" align="center">
+
 </tr>
 </table>
 
