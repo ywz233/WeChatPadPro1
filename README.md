@@ -128,7 +128,7 @@ WeChatPadPro 是基於 WeChat Pad 協議的高級 WeChat 管理工具，支援�
 
 ---
 
-## 🚀 v18.6 版本更新
+## 🚀 v860 版本更新
 
 > **[查看所有版本發布](https://github.com/WeChatPadPro/WeChatPadPro/releases)** - 獲取最新版本下載和更新說明
 
@@ -153,25 +153,25 @@ WeChatPadPro 是基於 WeChat Pad 協議的高級 WeChat 管理工具，支援�
 
 ### 3. 支持平台
 
-WeChatPadPro v18.6 支持以下操作系統和CPU架構：
+WeChatPadPro v860 支持以下操作系統和CPU架構：
 
 | 操作系統 | 支持的架構 | 檔案名 |
 |---------|-----------|-------|
-| Windows | AMD64 (x86_64) | wechatpadpro_v18.6_20250704_windows-amd64.zip |
-| Windows | ARM64 | wechatpadpro_v18.6_20250704_windows-arm64.zip |
-| macOS | AMD64 (Intel) | wechatpadpro_v18.6_20250704_macos-amd64.zip |
-| macOS | ARM64 (M1/M2) | wechatpadpro_v18.6_20250704_macos-arm64.zip |
-| Linux | AMD64 (x86_64) | wechatpadpro_v18.6_20250704_linux-amd64.zip |
-| Linux | ARM64 | wechatpadpro_v18.6_20250704_linux-arm64.zip |
-| Linux | MIPS64 | wechatpadpro_v18.6_20250704_linux-mips64.zip |
-| Linux | MIPS64LE | wechatpadpro_v18.6_20250704_linux-mips64le.zip |
-| Linux | PPC64 | wechatpadpro_v18.6_20250704_linux-ppc64.zip |
-| Linux | PPC64LE | wechatpadpro_v18.6_20250704_linux-ppc64le.zip |
-| Linux | RISC-V 64 | wechatpadpro_v18.6_20250704_linux-riscv64.zip |
-| FreeBSD | AMD64 | wechatpadpro_v18.6_20250704_freebsd-amd64.zip |
-| FreeBSD | ARM64 | wechatpadpro_v18.6_20250704_freebsd-arm64.zip |
-| OpenBSD | AMD64 | wechatpadpro_v18.6_20250704_openbsd-amd64.zip |
-| OpenBSD | ARM64 | wechatpadpro_v18.6_20250704_openbsd-arm64.zip |
+| Windows | AMD64 (x86_64) | wechatpadpro_v860_20250704_windows-amd64.zip |
+| Windows | ARM64 | wechatpadpro_v860_20250704_windows-arm64.zip |
+| macOS | AMD64 (Intel) | wechatpadpro_v860_20250704_macos-amd64.zip |
+| macOS | ARM64 (M1/M2) | wechatpadpro_v860_20250704_macos-arm64.zip |
+| Linux | AMD64 (x86_64) | wechatpadpro_v860_20250704_linux-amd64.zip |
+| Linux | ARM64 | wechatpadpro_v860_20250704_linux-arm64.zip |
+| Linux | MIPS64 | wechatpadpro_v860_20250704_linux-mips64.zip |
+| Linux | MIPS64LE | wechatpadpro_v860_20250704_linux-mips64le.zip |
+| Linux | PPC64 | wechatpadpro_v860_20250704_linux-ppc64.zip |
+| Linux | PPC64LE | wechatpadpro_v860_20250704_linux-ppc64le.zip |
+| Linux | RISC-V 64 | wechatpadpro_v860_20250704_linux-riscv64.zip |
+| FreeBSD | AMD64 | wechatpadpro_v860_20250704_freebsd-amd64.zip |
+| FreeBSD | ARM64 | wechatpadpro_v860_20250704_freebsd-arm64.zip |
+| OpenBSD | AMD64 | wechatpadpro_v860_20250704_openbsd-amd64.zip |
+| OpenBSD | ARM64 | wechatpadpro_v860_20250704_openbsd-arm64.zip |
 
 ### 4. 安裝說明
 
@@ -247,6 +247,16 @@ Webhook 可以將微信訊息即時推送到您指定的URL。配置方法：
   "signature": "訊息簽名"
 }
 ```
+
+3. **Webhook測試客戶端**：
+   我們提供了一個開源的Webhook測試客戶端，幫助您快速測試和接收Webhook訊息：
+   - **項目地址**：[wechatpad-webhook-client](https://github.com/WeChatPadPro/wechatpad-webhook-client)
+   - **主要功能**：
+     - 接收和處理微信發送的webhook訊息
+     - 支持配置熱加載、簽名驗證、重試機制
+     - 完整的日誌記錄系統
+     - 支持多種訊息類型處理
+   - **使用方法**：詳見項目README，包含完整的安裝和配置說明
 
 ---
 
