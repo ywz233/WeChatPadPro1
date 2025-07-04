@@ -87,6 +87,95 @@ WeChatPadPro 是一個功能強大的 WeChat 管理工具，基於 WeChat Pad �
 
 ---
 
+
+## 📢 加入官方交流群
+
+加入我們的官方交流群，獲取最新版本更新、技術支援和使用教程！
+
+<table>
+<tr>
+<td width="50%" align="center">
+
+### 💬 Telegram 交流群
+
+<img src="./static/qrcode/diabao.JPG" width="180" alt="Telegram群二維碼">
+
+🔗 **[點擊加入 Telegram](https://t.me/+LK0JuqLxjmk0ZjRh)**
+- 成員數量: 203+ 位用戶
+- 即時更新通知
+- 技術問題解答
+- 使用經驗分享
+
+</td>
+<td width="33%" align="center">
+
+### 💼 微信付費專業群
+
+<img src="https://raw.githubusercontent.com/WeChatPadPro/WeChatPadPro/refs/heads/main/static/qrcode/%E5%9B%BE%E7%89%87_20250619211139.jpg" width="180" alt="微信付費入群二維碼">
+
+🔒 **掃碼付費加入專業交流群**
+- VIP技術支持
+- 專屬功能體驗
+- 優先解決問題
+- 高級使用技巧分享
+</td>
+<td width="50%" align="center">
+
+### 🔔 釘釘交流群
+
+<img src="./static/qrcode/IMG_3817.JPG" width="180" alt="釘釘群二維碼">
+
+🔗 **[點擊加入釘釘](https://qr.dingtalk.com/action/joingroup?code=v1,k1,6uLDgyJodWIXoxwdwF3bYlv1GRj5uoC8waI6Z4PtIi0=&_dt_no_comment=1&origin=11)**
+- 技術討論
+- 問題解答
+- 使用經驗分享
+
+</td>
+</tr>
+</table>
+
+---
+
+## 💰 贊助支持
+
+<div align="center">
+  <br>
+  <img src="https://upload.wikimedia.org/wikipedia/commons/b/ba/Stripe_Logo%2C_revised_2016.svg" width="180px" alt="Stripe Logo"/>
+  <h3>您的支持是我們持續更新的動力</h3>
+
+  <a href="https://book.stripe.com/00w6oHbPkc7D1rn0iJ0Jq06">
+    <img src="https://img.shields.io/badge/-%F0%9F%92%B0%20%E9%BB%9E%E6%93%8A%E8%B4%8A%E5%8A%A9-00BB00?style=for-the-badge" height="60" width="400" alt="點擊贊助" />
+  </a>
+  <br><br>
+</div>
+
+<table>
+<tr>
+<td width="70%">
+
+### 🌟 成為贊助者可獲得
+- ✅ **優先技術支援** - 獲得開發者直接回應
+- ✅ **新功能優先體驗** - 提前體驗最新功能
+- ✅ **客製化需求支援** - 您的需求將被優先考慮
+- ✅ **企業級多帳號解決方案** - 適合商業用戶
+- ✅ **高級API支援** - 更多高級介面調用能力
+
+</td>
+<td width="30%" align="center">
+<br>
+<h3>立即行動</h3>
+<a href="https://book.stripe.com/00w6oHbPkc7D1rn0iJ0Jq06">
+  <img src="https://img.shields.io/badge/Stripe-支付-635BFF?style=for-the-badge&logo=stripe&logoColor=white" />
+</a>
+<br><br>
+<p>安全支付 · 即時開通</p>
+</td>
+</tr>
+</table>
+
+> 💡 **提示**: 完成贊助後，請保留交易號並聯繫我們獲取贊助者特權
+
+---
 ## 📝 功能特性
 
 WeChatPadPro 是基於 WeChat Pad 協議的高級 WeChat 管理工具，支援以下功能：
@@ -271,95 +360,6 @@ WeChatPadPro 提供了豐富的 WeChat 功能控制命令，包括：
 - **朋友圈互動**：自動點讚朋友圈功能
 
 👉 [查看完整的 WeChat 功能使用說明](./WeChat功能使用說明.md)
-
----
-
-## 📢 加入官方交流群
-
-加入我們的官方交流群，獲取最新版本更新、技術支援和使用教程！
-
-<table>
-<tr>
-<td width="50%" align="center">
-
-### 💬 Telegram 交流群
-
-<img src="./static/qrcode/diabao.JPG" width="180" alt="Telegram群二維碼">
-
-🔗 **[點擊加入 Telegram](https://t.me/+LK0JuqLxjmk0ZjRh)**
-- 成員數量: 203+ 位用戶
-- 即時更新通知
-- 技術問題解答
-- 使用經驗分享
-
-</td>
-<td width="33%" align="center">
-
-### 💼 微信付費專業群
-
-<img src="https://raw.githubusercontent.com/WeChatPadPro/WeChatPadPro/refs/heads/main/static/qrcode/%E5%9B%BE%E7%89%87_20250619211139.jpg" width="180" alt="微信付費入群二維碼">
-
-🔒 **掃碼付費加入專業交流群**
-- VIP技術支持
-- 專屬功能體驗
-- 優先解決問題
-- 高級使用技巧分享
-</td>
-<td width="50%" align="center">
-
-### 🔔 釘釘交流群
-
-<img src="./static/qrcode/IMG_3817.JPG" width="180" alt="釘釘群二維碼">
-
-🔗 **[點擊加入釘釘](https://qr.dingtalk.com/action/joingroup?code=v1,k1,6uLDgyJodWIXoxwdwF3bYlv1GRj5uoC8waI6Z4PtIi0=&_dt_no_comment=1&origin=11)**
-- 技術討論
-- 問題解答
-- 使用經驗分享
-
-</td>
-</tr>
-</table>
-
----
-
-## 💰 贊助支持
-
-<div align="center">
-  <br>
-  <img src="https://upload.wikimedia.org/wikipedia/commons/b/ba/Stripe_Logo%2C_revised_2016.svg" width="180px" alt="Stripe Logo"/>
-  <h3>您的支持是我們持續更新的動力</h3>
-  
-  <a href="https://book.stripe.com/00w6oHbPkc7D1rn0iJ0Jq06">
-    <img src="https://img.shields.io/badge/-%F0%9F%92%B0%20%E9%BB%9E%E6%93%8A%E8%B4%8A%E5%8A%A9-00BB00?style=for-the-badge" height="60" width="400" alt="點擊贊助" />
-  </a>
-  <br><br>
-</div>
-
-<table>
-<tr>
-<td width="70%">
-
-### 🌟 成為贊助者可獲得
-- ✅ **優先技術支援** - 獲得開發者直接回應
-- ✅ **新功能優先體驗** - 提前體驗最新功能
-- ✅ **客製化需求支援** - 您的需求將被優先考慮
-- ✅ **企業級多帳號解決方案** - 適合商業用戶
-- ✅ **高級API支援** - 更多高級介面調用能力
-
-</td>
-<td width="30%" align="center">
-<br>
-<h3>立即行動</h3>
-<a href="https://book.stripe.com/00w6oHbPkc7D1rn0iJ0Jq06">
-  <img src="https://img.shields.io/badge/Stripe-支付-635BFF?style=for-the-badge&logo=stripe&logoColor=white" />
-</a>
-<br><br>
-<p>安全支付 · 即時開通</p>
-</td>
-</tr>
-</table>
-
-> 💡 **提示**: 完成贊助後，請保留交易號並聯繫我們獲取贊助者特權
 
 ---
 
