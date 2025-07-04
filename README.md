@@ -43,9 +43,6 @@
   <a href="#-風控指南">🛡️ 風控指南</a> •
   <a href="#-贊助支持">💰 贊助支持</a>
 </p>
-## 🚀 v18.6 版本更新
-
-> **[查看所有版本發布](https://github.com/WeChatPadPro/WeChatPadPro/releases)** - 獲取最新版本下載和更新說明
 
 # WeChat API & iPad 協議使用說明與風控防範教程（2025 年更新）
 
