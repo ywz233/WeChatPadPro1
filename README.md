@@ -124,6 +124,128 @@ WeChatPadPro 是基於 WeChat Pad 協議的高級 WeChat 管理工具，支援�
 
 ---
 
+## 🚀 v18.6 版本更新
+
+> **[查看所有版本發布](https://github.com/WeChatPadPro/WeChatPadPro/releases)** - 獲取最新版本下載和更新說明
+
+### 1. 新增功能
+
+- **授權碼管理優化**：改進了授權碼授權設備管理API接口
+- **遠程Docker支持**：新增對遠程Docker環境的支持
+- **多平台構建優化**：支持更多操作系統和CPU架構
+- **資料庫連接增強**：優化了資料庫連接池和錯誤處理
+- **Webhook配置增強**：支持更多Webhook觸發事件和自定義配置
+- **檔案傳輸加速**：優化了大檔案傳輸性能和穩定性
+- **驗證碼識別**：集成驗證碼自動識別功能，提高登入成功率
+
+### 2. 性能優化
+
+- 降低了CPU和記憶體佔用
+- 優化了網路連接處理
+- 提高了大規模訊息處理的效率
+- 改進了錯誤處理和日誌記錄
+- 加速了檔案傳輸和處理速度
+- 提高了Webhook響應速度
+
+### 3. 支持平台
+
+WeChatPadPro v18.6 支持以下操作系統和CPU架構：
+
+| 操作系統 | 支持的架構 | 檔案名 |
+|---------|-----------|-------|
+| Windows | AMD64 (x86_64) | wechatpadpro_v18.6_20250704_windows-amd64.zip |
+| Windows | ARM64 | wechatpadpro_v18.6_20250704_windows-arm64.zip |
+| macOS | AMD64 (Intel) | wechatpadpro_v18.6_20250704_macos-amd64.zip |
+| macOS | ARM64 (M1/M2) | wechatpadpro_v18.6_20250704_macos-arm64.zip |
+| Linux | AMD64 (x86_64) | wechatpadpro_v18.6_20250704_linux-amd64.zip |
+| Linux | ARM64 | wechatpadpro_v18.6_20250704_linux-arm64.zip |
+| Linux | MIPS64 | wechatpadpro_v18.6_20250704_linux-mips64.zip |
+| Linux | MIPS64LE | wechatpadpro_v18.6_20250704_linux-mips64le.zip |
+| Linux | PPC64 | wechatpadpro_v18.6_20250704_linux-ppc64.zip |
+| Linux | PPC64LE | wechatpadpro_v18.6_20250704_linux-ppc64le.zip |
+| Linux | RISC-V 64 | wechatpadpro_v18.6_20250704_linux-riscv64.zip |
+| FreeBSD | AMD64 | wechatpadpro_v18.6_20250704_freebsd-amd64.zip |
+| FreeBSD | ARM64 | wechatpadpro_v18.6_20250704_freebsd-arm64.zip |
+| OpenBSD | AMD64 | wechatpadpro_v18.6_20250704_openbsd-amd64.zip |
+| OpenBSD | ARM64 | wechatpadpro_v18.6_20250704_openbsd-arm64.zip |
+
+### 4. 安裝說明
+
+#### 系統要求
+
+- 操作系統：Windows 7+、macOS 10.13+、Linux (內核 3.10+)、FreeBSD 12+、OpenBSD 6.8+
+- 記憶體：至少 2GB RAM
+- 儲存：至少 200MB 可用空間
+- 網路：穩定的互聯網連接
+
+#### 安裝步驟
+
+1. **下載**：根據您的操作系統和CPU架構，從上表中選擇對應的壓縮包下載。
+2. **解壓**：將下載的壓縮包解壓到您選擇的目錄。
+3. **配置**：
+   - 修改 `config.json` 檔案，設置必要的參數
+   - 配置 `webhook_config.json` 檔案，設置Webhook相關參數
+   - 設置環境變數（可選）：
+     ```
+     # Linux/macOS
+     export ADMIN_KEY="您的管理密鑰"
+     
+     # Windows
+     $env:ADMIN_KEY="您的管理密鑰"
+     ```
+4. **運行**：
+   - Windows: 雙擊 `wechatpadpro.exe` 或在命令行中運行
+   - Linux/macOS/BSD: 執行 `./wechatpadpro`
+
+### 5. 功能使用說明
+
+#### 檔案發送
+
+WeChatPadPro 支持發送多種類型的檔案，包括圖片、視頻、文檔等。
+
+```
+POST /api/v1/message/sendFile
+Content-Type: multipart/form-data
+
+{
+  "toUserName": "接收者微信ID",
+  "filePath": "本地檔案路徑",  // 與fileData二選一
+  "fileData": "base64編碼的檔案數據",  // 與filePath二選一
+  "fileName": "檔案名稱",
+  "fileType": "檔案類型"  // 可選值: image, video, file
+}
+```
+
+#### Webhook配置
+
+Webhook 可以將微信訊息即時推送到您指定的URL。配置方法：
+
+1. 編輯 `webhook_config.json` 檔案：
+```json
+{
+  "enabled": true,
+  "url": "http://您的服務器地址/webhook/receiver",
+  "events": ["message", "login", "logout", "friend_request"],
+  "retry_count": 3,
+  "retry_interval": 5,
+  "secret_key": "您的密鑰"
+}
+```
+
+2. 接收Webhook訊息的服務器需要處理POST請求，訊息格式為：
+```json
+{
+  "event_type": "message",
+  "timestamp": 1656789012,
+  "data": {
+    // 事件相關數據
+  },
+  "signature": "訊息簽名"
+}
+```
+
+---
+
 ## 📖 WeChat 功能使用說明
 
 WeChatPadPro 提供了豐富的 WeChat 功能控制命令，包括：
@@ -161,7 +283,7 @@ WeChatPadPro 提供了豐富的 WeChat 功能控制命令，包括：
 
 ### 💼 微信付費專業群
 
-<img src="./static/qrcode/291c1d65b3828af40c62ddf7c48c2bd.jpg" width="180" alt="微信付費入群二維碼">
+<img src="https://raw.githubusercontent.com/WeChatPadPro/WeChatPadPro/refs/heads/main/static/qrcode/%E5%9B%BE%E7%89%87_20250619211139.jpg" width="180" alt="微信付費入群二維碼">
 
 🔒 **掃碼付費加入專業交流群**
 - VIP技術支持
