@@ -4,7 +4,7 @@
   <img src="static/doc/4270252wc57e-4b66-9ae3-0a81fc001255.png" alt="WeChatPadPro" width="800px">
 </div>
 
-<h1 align="center">🚀 基於 WeChat Pad 協議的高級管理工具</h1>
+<h1 align="center">🚀 基於 WeChat Pad 協議的高級管理工具v860</h1>
 
 <div align="center">
   <strong>🌐 <a href="https://wx.knowhub.cloud/docs/">在線演示系統</a> - 默認密碼: 12345</strong>
@@ -12,10 +12,10 @@
 
 <p align="center">
   <a href="https://github.com/WeChatPadPro/WeChatPadPro">
-    <img src="https://img.shields.io/badge/Version-v8059-blue?style=for-the-badge" alt="版本">
+    <img src="https://img.shields.io/badge/Version-860-blue?style=for-the-badge" alt="版本">
   </a>
   <a href="https://github.com/WeChatPadPro/WeChatPadPro">
-    <img src="https://img.shields.io/badge/iOS-18.3.2-brightgreen?style=for-the-badge" alt="iOS">
+    <img src="https://img.shields.io/badge/iOS-18.5-brightgreen?style=for-the-badge" alt="iOS">
   </a>
   <a href="https://t.me/+LK0JuqLxjmk0ZjRh">
     <img src="https://img.shields.io/badge/Telegram-交流群-blue?style=for-the-badge&logo=telegram" alt="Telegram">
