@@ -108,15 +108,15 @@ WeChatPadPro 是基於 WeChat Pad 協議的高級 WeChat 管理工具，支援�
 ### 🔹 增強功能
 
 - 🔧 **MCP 增強功能**
-  - 多協議適配：自動識別並適配不同版本 WeChat 協議
-  - 自動化管理：通過配置實現請求自動通過、訊息同步
+    - 多協議適配：自動識別並適配不同版本 WeChat 協議
+    - 自動化管理：通過配置實現請求自動通過、訊息同步
 - 🤖 **自動化功能**
-  - 自動搶紅包、訊息防撤回
-  - 自動通過好友請求
-  - 多群訊息同步
+    - 自動搶紅包、訊息防撤回
+    - 自動通過好友請求
+    - 多群訊息同步
 - 👑 **高級群管理**
-  - 建群、拉人、踢人、邀請成員
-  - 群公告發布、修改群名稱
+    - 建群、拉人、踢人、邀請成員
+    - 群公告發布、修改群名稱
 
 </td>
 </tr>
@@ -193,7 +193,7 @@ WeChatPadPro 提供了豐富的 WeChat 功能控制命令，包括：
   <br>
   <img src="https://upload.wikimedia.org/wikipedia/commons/b/ba/Stripe_Logo%2C_revised_2016.svg" width="180px" alt="Stripe Logo"/>
   <h3>您的支持是我們持續更新的動力</h3>
-  
+
   <a href="https://book.stripe.com/00w6oHbPkc7D1rn0iJ0Jq06">
     <img src="https://img.shields.io/badge/-%F0%9F%92%B0%20%E9%BB%9E%E6%93%8A%E8%B4%8A%E5%8A%A9-00BB00?style=for-the-badge" height="60" width="400" alt="點擊贊助" />
   </a>
@@ -260,18 +260,18 @@ WeChatPadPro 提供了豐富的 WeChat 功能控制命令，包括：
 ### 登入注意事項
 
 1. **異地登入處理**
-   - 必須設置同城市的Socks5代理
-   - 代理格式: `socks5://用戶名:密碼@代理IP:代理端口`
-   - 代理優先級: 同城市IP > 同省IP
-   - 家庭內網穿透socks5代理IP穩定性最佳
-   - 需要搭建內網穿透socks5代理可聯繫我們協助
+    - 必須設置同城市的Socks5代理
+    - 代理格式: `socks5://用戶名:密碼@代理IP:代理端口`
+    - 代理優先級: 同城市IP > 同省IP
+    - 家庭內網穿透socks5代理IP穩定性最佳
+    - 需要搭建內網穿透socks5代理可聯繫我們協助
    > 推薦工具: [frp](https://github.com/fatedier/frp/releases)
 
 2. **首次登入說明**
-   - 可能出現立即掉線情況,重新掃碼登入2次後即可穩定
-   - 24小時內可能會再次掉線(見下圖),使用原API `key`重新登入即可
-   - 重新登入後一般可穩定使用3個月
-   - 3天後基本穩定,7天後更穩定
+    - 可能出現立即掉線情況,重新掃碼登入2次後即可穩定
+    - 24小時內可能會再次掉線(見下圖),使用原API `key`重新登入即可
+    - 重新登入後一般可穩定使用3個月
+    - 3天後基本穩定,7天後更穩定
    > ⚠️ 注意: 一個授權碼`key`僅限一個 WeChat 號使用,多帳號需生成多個授權碼
 
 ![登出錯誤示例](./static/doc/logout_error.png)
@@ -281,11 +281,11 @@ WeChatPadPro 提供了豐富的 WeChat 功能控制命令，包括：
 ### 基礎環境要求
 
 - MySQL (推薦5.7及以上版本)
-  - 資料庫: `wechat_mmtls`
-  - 用戶名: `wechat_mmtls`
-  - 密碼: `12345678`
+    - 資料庫: `wechat_mmtls`
+    - 用戶名: `wechat_mmtls`
+    - 密碼: `12345678`
 - Redis
-  - 密碼: `12345678`
+    - 密碼: `12345678`
 
 > 對於MySQL 5.7以下版本,需提前使用[wechat_mmtls.sql](./wechat_mmtls.sql)建立資料庫表
 
@@ -338,10 +338,10 @@ mysql -u root -p
 #### Windows安裝
 
 1. 下載對應版本MSI安裝包:
-   - [MySQL 5.6.51](https://downloads.mysql.com/archives/get/p/25/file/mysql-installer-community-5.6.51.0.msi)
-   - [MySQL 5.5.60](https://downloads.mysql.com/archives/get/p/25/file/mysql-installer-community-5.5.60.1.msi)
-   - [MySQL 5.7.44](https://dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.44.0.msi)
-   - [MySQL 8.0.39](https://dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-8.0.39.0.msi)
+    - [MySQL 5.6.51](https://downloads.mysql.com/archives/get/p/25/file/mysql-installer-community-5.6.51.0.msi)
+    - [MySQL 5.5.60](https://downloads.mysql.com/archives/get/p/25/file/mysql-installer-community-5.5.60.1.msi)
+    - [MySQL 5.7.44](https://dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.44.0.msi)
+    - [MySQL 8.0.39](https://dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-8.0.39.0.msi)
 
 > 注意:
 > - 以上均為32位版本,最大支援4GB記憶體
@@ -363,16 +363,16 @@ mysql -u root -p
 ### 配置檔案說明
 
 1. **setting.json**
-   - debug: 是否開啟debug日誌
-   - port: 服務端口號
-   - apiVersion: API版本(如/v849)
-   - ghWxid: 引流關注的公眾號wxid
-   - adminKey: 管理介面授權KEY
-   - redisConfig:
-     - Port: Redis端口
-     - Db: Redis資料庫號
-     - Pass: Redis密碼
-   - mySqlConnectStr: MySQL連接字串
+    - debug: 是否開啟debug日誌
+    - port: 服務端口號
+    - apiVersion: API版本(如/v849)
+    - ghWxid: 引流關注的公眾號wxid
+    - adminKey: 管理介面授權KEY
+    - redisConfig:
+        - Port: Redis端口
+        - Db: Redis資料庫號
+        - Pass: Redis密碼
+    - mySqlConnectStr: MySQL連接字串
 
 2. **owner.json**
    ```json
@@ -385,23 +385,23 @@ mysql -u root -p
 ## 🚀 啟動流程
 
 1. 修改配置檔案
-   - 設置setting.json中的adminKey和資料庫連接資訊
-   - 在owner.json中新增管理員wxid
+    - 設置setting.json中的adminKey和資料庫連接資訊
+    - 在owner.json中新增管理員wxid
 
 2. 初始化資料庫(MySQL 5.7+)
-   - Linux: `./01_InitMySQL -passwd="root密碼"`
-   - Windows: `01_InitMySQL.exe -passwd="root密碼"`
+    - Linux: `./01_InitMySQL -passwd="root密碼"`
+    - Windows: `01_InitMySQL.exe -passwd="root密碼"`
 
 3. 啟動服務
-   - Linux: `/opt/wechat/wechat_service >/opt/wechat/run.log 2>&1 &`
-   - Windows: 雙擊`wechat_service.exe`
+    - Linux: `/opt/wechat/wechat_service >/opt/wechat/run.log 2>&1 &`
+    - Windows: 雙擊`wechat_service.exe`
 
 4. 獲取AuthKey
    訪問: `http://127.0.0.1:8848/v849/login/GenAuthKey2?key=ADMIN_KEY&count=1&days=365`
 
 5. 登入操作
-   - 獲取二維碼(需配置本地代理)
-   - 監控二維碼狀態
+    - 獲取二維碼(需配置本地代理)
+    - 監控二維碼狀態
 
 ## 🔒 關於風控
 
@@ -455,20 +455,20 @@ mysql -u root -p
 ### 四、防範建議彙總
 
 - **登入與裝置管理**
-  - 固定IP、固定裝置
-  - 新裝置登入後靜置24小時
-  
+    - 固定IP、固定裝置
+    - 新裝置登入後靜置24小時
+
 - **操作行為管控**
-  - 控制好友新增數、拉群次數
-  - 避免發送違規內容
-  
+    - 控制好友新增數、拉群次數
+    - 避免發送違規內容
+
 - **內容合規與風險提示**
-  - 使用內容審查工具過濾文案
-  - 禁用第三方外掛或工具模擬登入
-  
+    - 使用內容審查工具過濾文案
+    - 禁用第三方外掛或工具模擬登入
+
 - **提升帳號權重**
-  - 完成WeChat實名認證
-  - 經常互動增加信任度
+    - 完成WeChat實名認證
+    - 經常互動增加信任度
 
 ### 五、技術支援
 
@@ -485,9 +485,9 @@ mysql -u root -p
 
 1. 導入[WeChat849.apipost.v7.json](./static/swagger/WeChat849.apipost.v7.json)
 2. 設置環境變數:
-   - WS_URL: WebSocket基礎URL
-   - ADMIN_KEY: 管理介面KEY
-   - SOCKS5: 本地代理地址
+    - WS_URL: WebSocket基礎URL
+    - ADMIN_KEY: 管理介面KEY
+    - SOCKS5: 本地代理地址
 3. 調用介面獲取TOKEN_KEY
 
 ![ApiPOST設置1](./static/doc/apipost1.png)
