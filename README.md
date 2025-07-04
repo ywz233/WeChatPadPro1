@@ -6,6 +6,10 @@
 
 <h1 align="center">🚀 基於 WeChat Pad 協議的高級管理工具</h1>
 
+<div align="center">
+  <strong>🌐 <a href="https://wx.knowhub.cloud/docs/">在線演示系統</a> - 默認密碼: 12345</strong>
+</div>
+
 <p align="center">
   <a href="https://github.com/WeChatPadPro/WeChatPadPro">
     <img src="https://img.shields.io/badge/Version-v8059-blue?style=for-the-badge" alt="版本">
