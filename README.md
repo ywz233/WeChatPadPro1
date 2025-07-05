@@ -39,6 +39,8 @@
 <p align="center">
   <a href="#-專案介紹">📋 專案介紹</a> •
   <a href="#-功能特性">📝 功能特性</a> •
+  <a href="#-更新日誌-changelog">📅 更新日誌</a> •
+  <a href="#-快速部署-docker">🚀 Docker部署</a> •
   <a href="#-使用指南與注意事項">📖 使用說明</a> •
   <a href="#-風控指南">🛡️ 風控指南</a> •
   <a href="#-贊助支持">💰 贊助支持</a>
@@ -48,15 +50,89 @@
 
 本教程旨在協助開發者全面了解 WeChat API 平台與 iPad 協議的登入行為、介面使用限制、風控策略及預防措施，確保使用穩定、安全、高效。
 
+## 🚀 快速部署 (Docker)
+
+如果您想快速部署 WeChatPadPro，我們提供了 Docker 部署方案，只需幾個簡單步驟即可完成部署：
+
+### 1. 克隆項目
+
+```bash
+git clone https://github.com/WeChatPadPro/WeChatPadPro.git
+cd WeChatPadPro/deploy
+```
+
+### 2. 配置環境變數
+
+編輯 `.env` 文件，根據您的需求修改配置：
+
+```ini
+# MySQL配置
+MYSQL_ROOT_PASSWORD=root123456
+MYSQL_DATABASE=weixin
+MYSQL_USER=weixin
+MYSQL_PASSWORD=123456
+MYSQL_PORT=3306
+
+# Redis配置
+REDIS_PASSWORD=123456
+REDIS_PORT=6379
+
+# WeChat Pad Pro配置
+WECHAT_PORT=8080
+DB_HOST=wechatpadpro_mysql
+DB_PORT=3306
+DB_DATABASE=weixin
+DB_USERNAME=weixin
+DB_PASSWORD=123456
+REDIS_HOST=wechatpadpro_redis
+REDIS_DB=0
+
+# 管理員密鑰（建議使用複雜的隨機字符串）
+ADMIN_KEY=999222
+```
+
+### 3. 啟動服務
+
+```bash
+docker-compose up -d
+```
+
+### 4. 訪問服務
+
+啟動成功後，您可以通過以下地址訪問服務：
+
+```
+http://您的伺服器IP:1238
+```
+
+### 5. 常用命令
+
+```bash
+# 查看服務狀態
+docker-compose ps
+
+# 查看日誌
+docker-compose logs -f
+
+# 停止服務
+docker-compose down
+
+# 重啟服務
+docker-compose restart
+```
+
+> 📝 **提示**：Docker 部署是最簡單快捷的方式，適合大多數用戶。如果您需要更多自定義配置，請參考下方的完整環境配置。
+
 ## 📋 快速開始
 
 在開始使用本專案之前，請務必：
 
 1. 📚 仔細閱讀[風控指南](#-風控指南)，了解帳號安全事項
-2. ⚙️ 按照[環境配置](#-環境配置)部署必要組件
-3. 🔧 完成[軟體配置](#-軟體配置)並啟動服務
-4. 🔒 遵循[登入注意事項](#登入注意事項)進行首次登入
-5. 🧪 參考[測試指南](#-測試指南)進行功能測試
+2. 🐳 選擇部署方式：
+   - [Docker快速部署](#-快速部署-docker)（推薦：簡單快捷）
+   - [傳統部署](#-環境配置)（適合需要自定義配置的用戶）
+3. 🔒 遵循[登入注意事項](#登入注意事項)進行首次登入
+4. 🧪 參考[測試指南](#-測試指南)進行功能測試
 
 > ⚠️ **特別提醒**：新帳號請務必遵循[新帳號使用建議](#-重要提醒)，避免觸發風控！
 
@@ -214,6 +290,49 @@ WeChatPadPro 是基於 WeChat Pad 協議的高級 WeChat 管理工具，支援�
 </td>
 </tr>
 </table>
+
+---
+
+## 📅 更新日誌 (CHANGELOG)
+
+### v1.1.0 (2025-07-06) - Webhook系統重大更新
+
+#### 🔥 重要更新 - Webhook系統全面優化
+- **訊息推送機制優化**
+  - 實現全局訊息去重緩存，避免重複推送同一訊息
+  - 新增訊息緩存過期機制，默認1小時過期
+  - 優化歷史訊息同步策略，減少每次獲取的訊息數量（從50條減少到20條）
+  - 增加同步間隔（從5秒增加到15秒），降低服務器負載
+
+- **訊息處理效率提升**
+  - 新增訊息批量處理機制，單批次最多處理20條訊息
+  - 實現訊息優先級排序，實時訊息優先於歷史訊息
+  - 添加訊息處理鎖機制，確保訊息處理的原子性
+  - 優化隊列處理邏輯，減少訊息處理延遲
+
+#### ✨ 新功能 - Webhook配置管理
+- **配置管理接口**
+  ```
+  POST   /v1/webhook/Config        # 創建新的Webhook配置
+  PUT    /v1/webhook/Update        # 更新現有Webhook配置
+  GET    /v1/webhook/List          # 獲取所有Webhook配置列表
+  GET    /v1/webhook/Status        # 查看Webhook配置狀態
+  GET    /v1/webhook/Test          # 測試Webhook連通性
+  ```
+
+- **配置功能特性**
+  - 支持自定義訊息類型過濾
+  - 支持自定義重試次數和超時時間
+  - 支持訊息簽名驗證機制（HMAC-SHA256）
+  - 支持啟用/禁用特定Webhook
+  - 支持是否接收自己發送的訊息
+  - 提供詳細的推送統計信息（成功數、失敗數、最後推送時間等）
+
+- **安全性和可靠性**
+  - 支持設置密鑰進行訊息簽名
+  - 實現指數退避重試機制
+  - 提供訊息推送狀態實時反饋
+  - 支持配置超時和重試參數
 
 ---
 
