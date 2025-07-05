@@ -46,121 +46,6 @@
   <a href="#-贊助支持">💰 贊助支持</a>
 </p>
 
-# WeChat API & iPad 協議使用說明與風控防範教程（2025 年更新）
-
-本教程旨在協助開發者全面了解 WeChat API 平台與 iPad 協議的登入行為、介面使用限制、風控策略及預防措施，確保使用穩定、安全、高效。
-
-## 🚀 快速部署 (Docker)
-
-如果您想快速部署 WeChatPadPro，我們提供了 Docker 部署方案，只需幾個簡單步驟即可完成部署：
-
-### 1. 克隆項目
-
-```bash
-git clone https://github.com/WeChatPadPro/WeChatPadPro.git
-cd WeChatPadPro/deploy
-```
-
-### 2. 配置環境變數
-
-編輯 `.env` 文件，根據您的需求修改配置：
-
-```ini
-# MySQL配置
-MYSQL_ROOT_PASSWORD=root123456
-MYSQL_DATABASE=weixin
-MYSQL_USER=weixin
-MYSQL_PASSWORD=123456
-MYSQL_PORT=3306
-
-# Redis配置
-REDIS_PASSWORD=123456
-REDIS_PORT=6379
-
-# WeChat Pad Pro配置
-WECHAT_PORT=8080
-DB_HOST=wechatpadpro_mysql
-DB_PORT=3306
-DB_DATABASE=weixin
-DB_USERNAME=weixin
-DB_PASSWORD=123456
-REDIS_HOST=wechatpadpro_redis
-REDIS_DB=0
-
-# 管理員密鑰（建議使用複雜的隨機字符串）
-ADMIN_KEY=999222
-```
-
-### 3. 啟動服務
-
-```bash
-docker-compose up -d
-```
-
-### 4. 訪問服務
-
-啟動成功後，您可以通過以下地址訪問服務：
-
-```
-http://您的伺服器IP:1238
-```
-
-### 5. 常用命令
-
-```bash
-# 查看服務狀態
-docker-compose ps
-
-# 查看日誌
-docker-compose logs -f
-
-# 停止服務
-docker-compose down
-
-# 重啟服務
-docker-compose restart
-```
-
-> 📝 **提示**：Docker 部署是最簡單快捷的方式，適合大多數用戶。如果您需要更多自定義配置，請參考下方的完整環境配置。
-
-## 📋 快速開始
-
-在開始使用本專案之前，請務必：
-
-1. 📚 仔細閱讀[風控指南](#-風控指南)，了解帳號安全事項
-2. 🐳 選擇部署方式：
-   - [Docker快速部署](#-快速部署-docker)（推薦：簡單快捷）
-   - [傳統部署](#-環境配置)（適合需要自定義配置的用戶）
-3. 🔒 遵循[登入注意事項](#登入注意事項)進行首次登入
-4. 🧪 參考[測試指南](#-測試指南)進行功能測試
-
-> ⚠️ **特別提醒**：新帳號請務必遵循[新帳號使用建議](#-重要提醒)，避免觸發風控！
-
-## 📋 專案介紹
-
-WeChatPadPro 是一個功能強大的 WeChat 管理工具，基於 WeChat Pad 協議開發。本專案致力於提供穩定、高效的 WeChat 自動化解決方案，支援多帳號管理、訊息處理、自動化任務等功能。
-
-### 🌟 主要特點
-
-- 🛡️ **安全可靠**: 採用最新的 WeChat Pad 協議，確保帳號安全
-- 🔄 **自動化處理**: 支援訊息自動回覆、群管理等自動化操作
-- 🎯 **精準控制**: 提供細粒度的功能控制和配置選項
-- 🔌 **擴展性強**: 支援外掛系統，可自定義擴展功能
-- 📊 **資料同步**: 支援多裝置資料同步，確保資訊統一
-
-### 🎯 適用場景
-
-- 👥 個人用戶：訊息管理、自動回覆、防撤回等
-- 🏢 企業用戶：客戶管理、批量操作、資料分析等
-- 🤖 開發者：二次開發、功能擴展、自動化整合等
-
-### 📦 環境要求
-
-- MySQL 5.7+ (推薦)
-- Redis
-- 穩定的網路環境
-- 支援 Windows/Linux 系統
-
 ---
 
 
@@ -250,6 +135,141 @@ WeChatPadPro 是一個功能強大的 WeChat 管理工具，基於 WeChat Pad �
 </table>
 
 > 💡 **提示**: 完成贊助後，請保留交易號並聯繫我們獲取贊助者特權
+# WeChat API & iPad 協議使用說明與風控防範教程（2025 年更新）
+
+本教程旨在協助開發者全面了解 WeChat API 平台與 iPad 協議的登入行為、介面使用限制、風控策略及預防措施，確保使用穩定、安全、高效。
+
+## 🚀 快速部署 (Docker)
+
+### ⏱️ 一分鐘部署
+
+只需三個命令，立即啟動 WeChatPadPro：
+
+```bash
+# 1. 克隆項目
+git clone https://github.com/WeChatPadPro/WeChatPadPro.git
+
+# 2. 進入部署目錄
+cd WeChatPadPro/deploy
+
+# 3. 啟動服務
+docker-compose up -d
+```
+
+啟動後訪問：`http://您的伺服器IP:1238`
+
+### 完整部署步驟
+
+如果您想快速部署 WeChatPadPro，我們提供了 Docker 部署方案，只需幾個簡單步驟即可完成部署：
+
+### 1. 克隆項目
+
+```bash
+git clone https://github.com/WeChatPadPro/WeChatPadPro.git
+cd WeChatPadPro/deploy
+```
+
+### 2. 配置環境變數
+
+編輯 `.env` 文件，根據您的需求修改配置：
+
+```ini
+# MySQL配置
+MYSQL_ROOT_PASSWORD=root123456
+MYSQL_DATABASE=weixin
+MYSQL_USER=weixin
+MYSQL_PASSWORD=123456
+MYSQL_PORT=3306
+
+# Redis配置
+REDIS_PASSWORD=123456
+REDIS_PORT=6379
+
+# WeChat Pad Pro配置
+WECHAT_PORT=8080
+DB_HOST=wechatpadpro_mysql
+DB_PORT=3306
+DB_DATABASE=weixin
+DB_USERNAME=weixin
+DB_PASSWORD=123456
+REDIS_HOST=wechatpadpro_redis
+REDIS_DB=0
+
+# 管理員密鑰（建議使用複雜的隨機字符串）
+ADMIN_KEY=999222
+```
+
+### 3. 啟動服務
+
+```bash
+docker-compose up -d
+```
+
+### 4. 訪問服務
+
+啟動成功後，您可以通過以下地址訪問服務：
+
+```
+http://您的伺服器IP:1238
+```
+
+### 5. 常用命令
+
+```bash
+# 查看服務狀態
+docker-compose ps
+
+# 查看日誌
+docker-compose logs -f
+
+# 停止服務
+docker-compose down
+
+# 重啟服務
+docker-compose restart
+```
+
+> 📝 **提示**：Docker 部署是最簡單快捷的方式，適合大多數用戶。如果您需要更多自定義配置，請參考下方的完整環境配置。
+
+## 📋 快速開始
+
+在開始使用本專案之前，請務必：
+
+1. 📚 仔細閱讀[風控指南](#-風控指南)，了解帳號安全事項
+2. 🐳 選擇部署方式：
+   - [一分鐘部署](#-一分鐘部署)（最快：僅需3個命令）
+   - [Docker完整部署](#完整部署步驟)（推薦：簡單快捷）
+   - [傳統部署](#-環境配置)（適合需要自定義配置的用戶）
+3. 🔒 遵循[登入注意事項](#登入注意事項)進行首次登入
+4. 🧪 參考[測試指南](#-測試指南)進行功能測試
+
+> ⚠️ **特別提醒**：新帳號請務必遵循[新帳號使用建議](#-重要提醒)，避免觸發風控！
+
+## 📋 專案介紹
+
+WeChatPadPro 是一個功能強大的 WeChat 管理工具，基於 WeChat Pad 協議開發。本專案致力於提供穩定、高效的 WeChat 自動化解決方案，支援多帳號管理、訊息處理、自動化任務等功能。
+
+### 🌟 主要特點
+
+- 🛡️ **安全可靠**: 採用最新的 WeChat Pad 協議，確保帳號安全
+- 🔄 **自動化處理**: 支援訊息自動回覆、群管理等自動化操作
+- 🎯 **精準控制**: 提供細粒度的功能控制和配置選項
+- 🔌 **擴展性強**: 支援外掛系統，可自定義擴展功能
+- 📊 **資料同步**: 支援多裝置資料同步，確保資訊統一
+
+### 🎯 適用場景
+
+- 👥 個人用戶：訊息管理、自動回覆、防撤回等
+- 🏢 企業用戶：客戶管理、批量操作、資料分析等
+- 🤖 開發者：二次開發、功能擴展、自動化整合等
+
+### 📦 環境要求
+
+- MySQL 5.7+ (推薦)
+- Redis
+- 穩定的網路環境
+- 支援 Windows/Linux 系統
+
 
 ---
 ## 📝 功能特性
