@@ -1,41 +1,41 @@
 # Webhook 安全性指南
 
-## 目录
+## 目錄
 
 1. [安全概述](#安全概述)
-2. [签名验证](#签名验证)
-3. [传输安全](#传输安全)
-4. [服务器安全](#服务器安全)
-5. [密钥管理](#密钥管理)
-6. [IP 白名单](#ip-白名单)
-7. [请求限流](#请求限流)
-8. [数据处理安全](#数据处理安全)
-9. [安全检查清单](#安全检查清单)
-10. [常见安全问题](#常见安全问题)
+2. [簽名驗證](#簽名驗證)
+3. [傳輸安全](#傳輸安全)
+4. [伺服器安全](#伺服器安全)
+5. [密鑰管理](#密鑰管理)
+6. [IP 白名單](#ip-白名單)
+7. [請求限流](#請求限流)
+8. [數據處理安全](#數據處理安全)
+9. [安全檢查清單](#安全檢查清單)
+10. [常見安全問題](#常見安全問題)
 
 ## 安全概述
 
-Webhook 是一种允许系统间实时通信的机制，但如果没有适当的安全措施，可能会导致数据泄露、服务中断或未经授权的访问。本指南提供了保护 Webhook 通信安全的最佳实践。
+Webhook 是一種允許系統間實時通信的機制，但如果沒有適當的安全措施，可能會導致數據洩露、服務中斷或未經授權的訪問。本指南提供了保護 Webhook 通信安全的最佳實踐。
 
-### 主要安全风险
+### 主要安全風險
 
-1. **请求伪造**：攻击者可能伪造请求发送到您的服务器
-2. **数据窃听**：未加密的通信可能被第三方截获
-3. **重放攻击**：合法请求被记录并重新发送
-4. **拒绝服务攻击**：大量请求导致服务不可用
-5. **数据泄露**：敏感信息通过 Webhook 暴露
+1. **請求偽造**：攻擊者可能偽造請求發送到您的伺服器
+2. **數據竊聽**：未加密的通信可能被第三方截獲
+3. **重放攻擊**：合法請求被記錄並重新發送
+4. **拒絕服務攻擊**：大量請求導致服務不可用
+5. **數據洩露**：敏感信息通過 Webhook 暴露
 
-## 签名验证
+## 簽名驗證
 
-签名验证是确保 Webhook 请求来自合法来源的最重要机制。
+簽名驗證是確保 Webhook 請求來自合法來源的最重要機制。
 
-### 签名生成过程
+### 簽名生成過程
 
-1. 系统使用共享密钥（Secret）和请求数据生成签名
-2. 签名通过请求头发送给接收方
-3. 接收方使用相同的算法和密钥验证签名
+1. 系統使用共享密鑰（Secret）和請求數據生成簽名
+2. 簽名通過請求頭發送給接收方
+3. 接收方使用相同的算法和密鑰驗證簽名
 
-### 验证签名的代码示例
+### 驗證簽名的代碼示例
 
 **Python 示例**
 
@@ -44,17 +44,17 @@ import hmac
 import hashlib
 
 def verify_signature(request_body, timestamp, signature, secret):
-    # 组合待签名字符串
+    # 組合待簽名字符串
     string_to_sign = timestamp + ":" + request_body
     
-    # 计算签名
+    # 計算簽名
     computed_signature = hmac.new(
         secret.encode('utf-8'),
         string_to_sign.encode('utf-8'),
         hashlib.sha256
     ).hexdigest()
     
-    # 使用安全比较方法比较签名
+    # 使用安全比較方法比較簽名
     return hmac.compare_digest(computed_signature, signature)
 ```
 
@@ -74,7 +74,7 @@ function verifySignature(body, timestamp, signature, secret) {
     .update(stringToSign)
     .digest('hex');
   
-  // 使用安全比较方法
+  // 使用安全比較方法
   return crypto.timingSafeEqual(
     Buffer.from(computedSignature),
     Buffer.from(signature)
@@ -82,90 +82,90 @@ function verifySignature(body, timestamp, signature, secret) {
 }
 ```
 
-### 最佳实践
+### 最佳實踐
 
-1. **使用强密码学算法**：优先选择 HMAC-SHA256 或更强的算法
-2. **包含时间戳**：在签名中包含时间戳，防止重放攻击
-3. **安全比较**：使用时间恒定的比较方法，防止时序攻击
-4. **验证所有请求**：不要跳过任何请求的验证过程
+1. **使用強密碼學算法**：優先選擇 HMAC-SHA256 或更強的算法
+2. **包含時間戳**：在簽名中包含時間戳，防止重放攻擊
+3. **安全比較**：使用時間恒定的比較方法，防止時序攻擊
+4. **驗證所有請求**：不要跳過任何請求的驗證過程
 
-## 传输安全
+## 傳輸安全
 
-确保 Webhook 通信的传输安全对保护数据至关重要。
+確保 Webhook 通信的傳輸安全對保護數據至關重要。
 
 ### HTTPS 加密
 
-始终使用 HTTPS 进行 Webhook 通信，确保数据在传输过程中加密。
+始終使用 HTTPS 進行 Webhook 通信，確保數據在傳輸過程中加密。
 
 **配置要求**：
 
-1. 有效的 SSL/TLS 证书（推荐使用 TLS 1.2 或更高版本）
-2. 正确配置的服务器，禁用不安全的密码套件
-3. 定期更新和续订证书
+1. 有效的 SSL/TLS 證書（推薦使用 TLS 1.2 或更高版本）
+2. 正確配置的伺服器，禁用不安全的密碼套件
+3. 定期更新和續訂證書
 
-### 证书验证
+### 證書驗證
 
-在客户端验证服务器证书，防止中间人攻击。
+在客戶端驗證伺服器證書，防止中間人攻擊。
 
 ```python
 import requests
 
 def send_webhook(url, data, verify=True):
     """
-    发送 Webhook 请求，默认验证证书
-    verify=True: 验证证书
-    verify='/path/to/ca-bundle.pem': 使用自定义 CA 证书
+    發送 Webhook 請求，默認驗證證書
+    verify=True: 驗證證書
+    verify='/path/to/ca-bundle.pem': 使用自定義 CA 證書
     """
     response = requests.post(url, json=data, verify=verify)
     return response
 ```
 
-## 服务器安全
+## 伺服器安全
 
-保护接收 Webhook 的服务器是安全策略的重要组成部分。
+保護接收 Webhook 的伺服器是安全策略的重要組成部分。
 
-### 服务器加固
+### 伺服器加固
 
-1. **最小权限原则**：Webhook 处理服务只应有完成任务所需的最小权限
-2. **隔离环境**：使用容器或虚拟机隔离 Webhook 处理服务
-3. **定期更新**：保持服务器操作系统和软件包的最新安全补丁
-4. **禁用不必要的服务**：关闭与 Webhook 处理无关的服务
+1. **最小權限原則**：Webhook 處理服務只應有完成任務所需的最小權限
+2. **隔離環境**：使用容器或虛擬機隔離 Webhook 處理服務
+3. **定期更新**：保持伺服器操作系統和軟件包的最新安全補丁
+4. **禁用不必要的服務**：關閉與 Webhook 處理無關的服務
 
 ### 安全配置
 
-1. **专用端点**：为 Webhook 创建专用的 API 端点
-2. **防火墙规则**：限制只允许必要的入站连接
-3. **资源限制**：设置请求大小限制，防止资源耗尽攻击
+1. **專用端點**：為 Webhook 創建專用的 API 端點
+2. **防火牆規則**：限制只允許必要的入站連接
+3. **資源限制**：設置請求大小限制，防止資源耗盡攻擊
 
-## 密钥管理
+## 密鑰管理
 
-妥善管理 Webhook 密钥对于维护系统安全至关重要。
+妥善管理 Webhook 密鑰對於維護系統安全至關重要。
 
-### 密钥存储
+### 密鑰存儲
 
-1. **安全存储**：使用专用的密钥管理服务或加密的配置存储
-2. **避免硬编码**：不要在代码中硬编码密钥
-3. **环境变量**：使用环境变量或配置文件存储密钥
+1. **安全存儲**：使用專用的密鑰管理服務或加密的配置存儲
+2. **避免硬編碼**：不要在代碼中硬編碼密鑰
+3. **環境變量**：使用環境變量或配置文件存儲密鑰
 
 ```python
-# 不要这样做
+# 不要這樣做
 SECRET_KEY = "your_hard_coded_secret"
 
-# 正确的做法
+# 正確的做法
 import os
 SECRET_KEY = os.environ.get("WEBHOOK_SECRET")
 ```
 
-### 密钥轮换
+### 密鑰輪換
 
-1. **定期更换**：定期更新 Webhook 密钥
-2. **无缝轮换**：实现支持多个有效密钥的机制，实现无缝轮换
-3. **撤销机制**：能够立即撤销泄露的密钥
+1. **定期更換**：定期更新 Webhook 密鑰
+2. **無縫輪換**：實現支持多個有效密鑰的機制，實現無縫輪換
+3. **撤銷機制**：能夠立即撤銷洩露的密鑰
 
 ```python
-# 支持多个密钥的验证函数
+# 支持多個密鑰的驗證函數
 def verify_with_multiple_secrets(body, timestamp, signature):
-    # 当前密钥和前一个密钥
+    # 當前密鑰和前一個密鑰
     secrets = [CURRENT_SECRET, PREVIOUS_SECRET]
     
     for secret in secrets:
@@ -175,30 +175,30 @@ def verify_with_multiple_secrets(body, timestamp, signature):
     return False
 ```
 
-## IP 白名单
+## IP 白名單
 
-限制只接受来自可信 IP 地址的 Webhook 请求。
+限制只接受來自可信 IP 地址的 Webhook 請求。
 
-### 实现白名单
+### 實現白名單
 
 ```python
 def is_ip_allowed(ip_address):
     allowed_ips = [
         '192.168.1.1',
         '10.0.0.1',
-        # 添加更多允许的 IP
+        # 添加更多允許的 IP
     ]
     
     allowed_ranges = [
         '192.168.0.0/16',  # CIDR 表示法
-        # 添加更多允许的 IP 范围
+        # 添加更多允許的 IP 範圍
     ]
     
-    # 检查具体 IP
+    # 檢查具體 IP
     if ip_address in allowed_ips:
         return True
     
-    # 检查 IP 范围
+    # 檢查 IP 範圍
     for ip_range in allowed_ranges:
         if is_ip_in_range(ip_address, ip_range):
             return True
@@ -206,23 +206,23 @@ def is_ip_allowed(ip_address):
     return False
 ```
 
-### 动态 IP 处理
+### 動態 IP 處理
 
-如果 Webhook 发送方使用动态 IP，可以考虑以下策略：
+如果 Webhook 發送方使用動態 IP，可以考慮以下策略：
 
-1. **定期更新白名单**：通过安全通道获取最新的 IP 列表
-2. **基于域名的白名单**：结合 DNS 解析实现基于域名的白名单
-3. **增强其他安全措施**：当无法实现严格的 IP 白名单时，加强签名验证等其他安全措施
+1. **定期更新白名單**：通過安全通道獲取最新的 IP 列表
+2. **基於域名的白名單**：結合 DNS 解析實現基於域名的白名單
+3. **增強其他安全措施**：當無法實現嚴格的 IP 白名單時，加強簽名驗證等其他安全措施
 
-## 请求限流
+## 請求限流
 
-防止过多的请求导致服务不可用。
+防止過多的請求導致服務不可用。
 
 ### 限流策略
 
-1. **请求速率限制**：限制每个来源的请求频率
-2. **令牌桶算法**：实现更灵活的限流策略
-3. **退避策略**：对超出限制的请求实施指数退避
+1. **請求速率限制**：限制每個來源的請求頻率
+2. **令牌桶算法**：實現更靈活的限流策略
+3. **退避策略**：對超出限制的請求實施指數退避
 
 ```python
 import time
@@ -230,67 +230,67 @@ from functools import wraps
 
 class RateLimiter:
     def __init__(self, max_calls, period):
-        self.max_calls = max_calls  # 时间段内允许的最大请求数
-        self.period = period        # 时间段（秒）
-        self.calls = []             # 请求时间戳列表
+        self.max_calls = max_calls  # 時間段內允許的最大請求數
+        self.period = period        # 時間段（秒）
+        self.calls = []             # 請求時間戳列表
     
     def __call__(self, f):
         @wraps(f)
         def wrapped(*args, **kwargs):
             now = time.time()
             
-            # 移除过期的请求记录
+            # 移除過期的請求記錄
             self.calls = [t for t in self.calls if now - t < self.period]
             
-            # 检查是否超出限制
+            # 檢查是否超出限制
             if len(self.calls) >= self.max_calls:
                 return {"status": "error", "message": "Rate limit exceeded"}, 429
             
-            # 记录当前请求
+            # 記錄當前請求
             self.calls.append(now)
             
-            # 执行原函数
+            # 執行原函數
             return f(*args, **kwargs)
         return wrapped
 
 # 使用示例
-@RateLimiter(max_calls=10, period=60)  # 每分钟最多 10 个请求
+@RateLimiter(max_calls=10, period=60)  # 每分鐘最多 10 個請求
 def webhook_handler():
-    # 处理 Webhook 请求
+    # 處理 Webhook 請求
     pass
 ```
 
-## 数据处理安全
+## 數據處理安全
 
-安全处理 Webhook 接收到的数据对防止安全漏洞至关重要。
+安全處理 Webhook 接收到的數據對防止安全漏洞至關重要。
 
-### 输入验证
+### 輸入驗證
 
-1. **验证数据格式**：确保数据符合预期的格式和类型
-2. **长度限制**：限制输入字段的长度
-3. **内容验证**：验证内容是否符合业务规则
+1. **驗證數據格式**：確保數據符合預期的格式和類型
+2. **長度限制**：限制輸入字段的長度
+3. **內容驗證**：驗證內容是否符合業務規則
 
 ```python
 def validate_webhook_data(data):
-    # 检查必填字段
+    # 檢查必填字段
     required_fields = ['msgId', 'fromUser', 'msgType', 'content']
     for field in required_fields:
         if field not in data:
             return False, f"Missing required field: {field}"
     
-    # 验证字段类型
+    # 驗證字段類型
     if not isinstance(data['msgId'], str):
         return False, "msgId must be a string"
     
     if not isinstance(data['msgType'], int):
         return False, "msgType must be an integer"
     
-    # 验证字段长度
+    # 驗證字段長度
     if len(data['msgId']) > 64:
         return False, "msgId too long"
     
-    # 验证内容
-    if data['msgType'] == 1:  # 文本消息
+    # 驗證內容
+    if data['msgType'] == 1:  # 文字訊息
         if not isinstance(data['content'], str):
             return False, "Content must be a string for text messages"
         if len(data['content']) > 10000:
@@ -299,11 +299,11 @@ def validate_webhook_data(data):
     return True, "Validation passed"
 ```
 
-### 防止注入攻击
+### 防止注入攻擊
 
-1. **参数化查询**：使用参数化查询防止 SQL 注入
-2. **输出编码**：对输出进行适当编码，防止 XSS 攻击
-3. **安全反序列化**：谨慎处理序列化数据
+1. **參數化查詢**：使用參數化查詢防止 SQL 注入
+2. **輸出編碼**：對輸出進行適當編碼，防止 XSS 攻擊
+3. **安全反序列化**：謹慎處理序列化數據
 
 ```python
 # 防止 SQL 注入的例子
@@ -312,77 +312,77 @@ import sqlite3
 def save_message(db_connection, message_id, content):
     cursor = db_connection.cursor()
     
-    # 不安全的方式（容易受到 SQL 注入攻击）
+    # 不安全的方式（容易受到 SQL 注入攻擊）
     # query = f"INSERT INTO messages (id, content) VALUES ('{message_id}', '{content}')"
     # cursor.execute(query)
     
-    # 安全的方式（使用参数化查询）
+    # 安全的方式（使用參數化查詢）
     query = "INSERT INTO messages (id, content) VALUES (?, ?)"
     cursor.execute(query, (message_id, content))
     
     db_connection.commit()
 ```
 
-## 安全检查清单
+## 安全檢查清單
 
-使用以下检查清单确保您的 Webhook 实现安全：
+使用以下檢查清單確保您的 Webhook 實現安全：
 
-- [ ] 实现了签名验证机制
-- [ ] 使用 HTTPS 进行所有通信
-- [ ] 验证请求中的时间戳，防止重放攻击
-- [ ] 实现了 IP 白名单（如果适用）
-- [ ] 设置了请求速率限制
-- [ ] 密钥安全存储，不在代码中硬编码
-- [ ] 定期轮换 Webhook 密钥
-- [ ] 对所有输入数据进行验证
-- [ ] 实现了请求超时机制
-- [ ] 记录所有 Webhook 活动以便审计
-- [ ] 设置了监控和告警机制
-- [ ] 制定了安全事件响应计划
+- [ ] 實現了簽名驗證機制
+- [ ] 使用 HTTPS 進行所有通信
+- [ ] 驗證請求中的時間戳，防止重放攻擊
+- [ ] 實現了 IP 白名單（如果適用）
+- [ ] 設置了請求速率限制
+- [ ] 密鑰安全存儲，不在代碼中硬編碼
+- [ ] 定期輪換 Webhook 密鑰
+- [ ] 對所有輸入數據進行驗證
+- [ ] 實現了請求超時機制
+- [ ] 記錄所有 Webhook 活動以便審計
+- [ ] 設置了監控和告警機制
+- [ ] 制定了安全事件響應計劃
 
-## 常见安全问题
+## 常見安全問題
 
-### 1. 签名验证不当
+### 1. 簽名驗證不當
 
-**问题**：不正确地实现签名验证，或者完全跳过验证。
+**問題**：不正確地實現簽名驗證，或者完全跳過驗證。
 
-**解决方案**：
-- 使用标准的加密库实现签名验证
-- 确保使用时间恒定的比较方法
-- 验证所有请求，不设置例外
+**解決方案**：
+- 使用標準的加密庫實現簽名驗證
+- 確保使用時間恒定的比較方法
+- 驗證所有請求，不設置例外
 
-### 2. 密钥泄露
+### 2. 密鑰洩露
 
-**问题**：Webhook 密钥被意外泄露或嵌入到客户端代码中。
+**問題**：Webhook 密鑰被意外洩露或嵌入到客戶端代碼中。
 
-**解决方案**：
-- 使用安全的密钥管理系统
-- 定期轮换密钥
-- 监控异常活动，及时发现泄露
+**解決方案**：
+- 使用安全的密鑰管理系統
+- 定期輪換密鑰
+- 監控異常活動，及時發現洩露
 
 ### 3. 缺乏速率限制
 
-**问题**：没有实现请求速率限制，容易受到拒绝服务攻击。
+**問題**：沒有實現請求速率限制，容易受到拒絕服務攻擊。
 
-**解决方案**：
-- 实现请求速率限制
-- 对异常流量进行监控和告警
-- 准备扩展策略应对流量高峰
+**解決方案**：
+- 實現請求速率限制
+- 對異常流量進行監控和告警
+- 準備擴展策略應對流量高峰
 
-### 4. 不安全的数据处理
+### 4. 不安全的數據處理
 
-**问题**：不安全地处理接收到的数据，可能导致注入攻击。
+**問題**：不安全地處理接收到的數據，可能導致注入攻擊。
 
-**解决方案**：
-- 对所有输入进行严格验证
-- 使用参数化查询和安全的 API
-- 实施最小权限原则
+**解決方案**：
+- 對所有輸入進行嚴格驗證
+- 使用參數化查詢和安全的 API
+- 實施最小權限原則
 
-### 5. 缺乏监控和日志
+### 5. 缺乏監控和日誌
 
-**问题**：没有足够的监控和日志记录，难以发现安全问题。
+**問題**：沒有足夠的監控和日誌記錄，難以發現安全問題。
 
-**解决方案**：
-- 记录所有 Webhook 活动
-- 实现实时监控和告警
-- 定期审查日志，寻找异常模式 
+**解決方案**：
+- 記錄所有 Webhook 活動
+- 實現實時監控和告警
+- 定期審查日誌，尋找異常模式 

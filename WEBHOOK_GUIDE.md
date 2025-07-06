@@ -1,42 +1,42 @@
-# Webhook 连接与消息处理指南
+# Webhook 連接與訊息處理指南
 
-## 目录
+## 目錄
 
-1. [简介](#简介)
+1. [簡介](#簡介)
 2. [Webhook 配置](#webhook-配置)
-3. [消息接收](#消息接收)
-4. [消息格式](#消息格式)
-5. [消息处理](#消息处理)
+3. [訊息接收](#訊息接收)
+4. [訊息格式](#訊息格式)
+5. [訊息處理](#訊息處理)
 6. [安全性](#安全性)
-7. [错误处理](#错误处理)
-8. [最佳实践](#最佳实践)
-9. [示例代码](#示例代码)
-10. [常见问题](#常见问题)
+7. [錯誤處理](#錯誤處理)
+8. [最佳實踐](#最佳實踐)
+9. [示例代碼](#示例代碼)
+10. [常見問題](#常見問題)
 
-## 简介
+## 簡介
 
-Webhook 是一种基于 HTTP 的回调机制，允许我们的系统在特定事件发生时，向您预先配置的 URL 发送实时通知。通过 Webhook，您可以接收微信消息、状态变更等事件，实现系统间的实时数据同步。
+Webhook 是一種基於 HTTP 的回調機制，允許我們的系統在特定事件發生時，向您預先配置的 URL 發送實時通知。通過 Webhook，您可以接收微信訊息、狀態變更等事件，實現系統間的實時數據同步。
 
 ### 主要功能
 
-- 实时接收微信消息（文本、图片、语音、视频等）
-- 接收群组消息和私聊消息
-- 接收状态变更通知（登录状态、好友请求等）
-- 支持消息过滤和自定义配置
+- 實時接收微信訊息（文字、圖片、語音、視頻等）
+- 接收群組訊息和私聊訊息
+- 接收狀態變更通知（登入狀態、好友請求等）
+- 支持訊息過濾和自定義配置
 
 ## Webhook 配置
 
-### 配置步骤
+### 配置步驟
 
-1. **创建 Webhook 配置**
+1. **創建 Webhook 配置**
 
-   通过 API 创建 Webhook 配置：
+   通過 API 創建 Webhook 配置：
 
    ```http
    POST /v1/webhook/Config
    ```
 
-   请求体：
+   請求體：
    ```json
    {
      "URL": "https://your-server.com/webhook/receiver",
@@ -49,14 +49,14 @@ Webhook 是一种基于 HTTP 的回调机制，允许我们的系统在特定事
    }
    ```
 
-   参数说明：
-   - `URL`: 接收消息的服务器地址
-   - `Secret`: 用于消息签名验证的密钥
-   - `Enabled`: 是否启用该 Webhook
-   - `Timeout`: 请求超时时间（秒）
-   - `RetryCount`: 失败重试次数
-   - `MessageTypes`: 接收的消息类型（1=文本, 3=图片, 34=语音, 43=视频, 47=表情, 49=链接）
-   - `IncludeSelfMessage`: 是否接收自己发送的消息
+   參數說明：
+   - `URL`: 接收訊息的伺服器地址
+   - `Secret`: 用於訊息簽名驗證的密鑰
+   - `Enabled`: 是否啟用該 Webhook
+   - `Timeout`: 請求超時時間（秒）
+   - `RetryCount`: 失敗重試次數
+   - `MessageTypes`: 接收的訊息類型（1=文字, 3=圖片, 34=語音, 43=視頻, 47=表情, 49=鏈接）
+   - `IncludeSelfMessage`: 是否接收自己發送的訊息
 
 2. **查看 Webhook 配置**
 
@@ -64,7 +64,7 @@ Webhook 是一种基于 HTTP 的回调机制，允许我们的系统在特定事
    GET /v1/webhook/List
    ```
 
-3. **测试 Webhook 连接**
+3. **測試 Webhook 連接**
 
    ```http
    GET /v1/webhook/Test
@@ -76,23 +76,23 @@ Webhook 是一种基于 HTTP 的回调机制，允许我们的系统在特定事
    PUT /v1/webhook/Update
    ```
 
-## 消息接收
+## 訊息接收
 
-### 服务器要求
+### 伺服器要求
 
-1. **公网可访问**：您的服务器必须能够从公网访问
-2. **支持 HTTPS**：建议使用 HTTPS 确保安全性
-3. **响应及时**：服务器应在 5 秒内响应请求，否则会被视为失败
+1. **公網可訪問**：您的伺服器必須能夠從公網訪問
+2. **支持 HTTPS**：建議使用 HTTPS 確保安全性
+3. **響應及時**：伺服器應在 5 秒內響應請求，否則會被視為失敗
 
 ### 接收流程
 
-1. 当事件发生时，系统会向您配置的 URL 发送 POST 请求
-2. 您的服务器需要返回 HTTP 状态码 200 表示成功接收
-3. 如果返回其他状态码或超时，系统会根据配置的重试次数进行重试
+1. 當事件發生時，系統會向您配置的 URL 發送 POST 請求
+2. 您的伺服器需要返回 HTTP 狀態碼 200 表示成功接收
+3. 如果返回其他狀態碼或超時，系統會根據配置的重試次數進行重試
 
-## 消息格式
+## 訊息格式
 
-### 请求头
+### 請求頭
 
 ```
 Content-Type: application/json
@@ -100,7 +100,7 @@ X-Webhook-Timestamp: 1625123456
 X-Webhook-Signature: abcdef1234567890...
 ```
 
-### 请求体
+### 請求體
 
 ```json
 {
@@ -110,97 +110,97 @@ X-Webhook-Signature: abcdef1234567890...
   "fromUser": "wxid_sender12345",
   "toUser": "wxid_receiver12345",
   "msgType": 1,
-  "content": "你好，这是一条测试消息",
+  "content": "你好，這是一條測試訊息",
   "isSelfMsg": false,
   "createTime": 1625123450,
   "isHistory": false
 }
 ```
 
-### 字段说明
+### 字段說明
 
-| 字段 | 类型 | 说明 |
+| 字段 | 類型 | 說明 |
 |------|------|------|
-| key | string | 微信账号唯一标识 |
-| msgId | string | 消息唯一ID |
-| timestamp | int64 | 消息推送时间戳 |
-| fromUser | string | 发送者ID |
+| key | string | 微信帳號唯一標識 |
+| msgId | string | 訊息唯一ID |
+| timestamp | int64 | 訊息推送時間戳 |
+| fromUser | string | 發送者ID |
 | toUser | string | 接收者ID |
-| msgType | int | 消息类型 |
-| content | object | 消息内容，根据消息类型不同而不同 |
-| isSelfMsg | boolean | 是否为自己发送的消息 |
-| createTime | int64 | 消息创建时间戳 |
-| isHistory | boolean | 是否为历史消息 |
+| msgType | int | 訊息類型 |
+| content | object | 訊息內容，根據訊息類型不同而不同 |
+| isSelfMsg | boolean | 是否為自己發送的訊息 |
+| createTime | int64 | 訊息創建時間戳 |
+| isHistory | boolean | 是否為歷史訊息 |
 
-### 消息类型说明
+### 訊息類型說明
 
-| msgType | 说明 | content 格式 |
+| msgType | 說明 | content 格式 |
 |---------|------|--------------|
-| 1 | 文本消息 | 字符串 |
-| 3 | 图片消息 | 图片URL或Base64 |
-| 34 | 语音消息 | 语音URL或Base64 |
-| 43 | 视频消息 | 视频URL或Base64 |
-| 47 | 表情消息 | 表情URL或Base64 |
-| 49 | 链接消息 | 包含标题、描述、URL等的对象 |
-| 10000 | 系统通知 | 字符串 |
-| 10002 | 撤回消息 | 字符串 |
+| 1 | 文字訊息 | 字符串 |
+| 3 | 圖片訊息 | 圖片URL或Base64 |
+| 34 | 語音訊息 | 語音URL或Base64 |
+| 43 | 視頻訊息 | 視頻URL或Base64 |
+| 47 | 表情訊息 | 表情URL或Base64 |
+| 49 | 鏈接訊息 | 包含標題、描述、URL等的對象 |
+| 10000 | 系統通知 | 字符串 |
+| 10002 | 撤回訊息 | 字符串 |
 
-## 消息处理
+## 訊息處理
 
-### 验证签名
+### 驗證簽名
 
-每个 Webhook 请求都包含签名，您应该验证签名以确保请求的合法性：
+每個 Webhook 請求都包含簽名，您應該驗證簽名以確保請求的合法性：
 
 ```python
 import hmac
 import hashlib
 
 def verify_signature(request_body, timestamp, signature, secret):
-    # 组合待签名字符串
+    # 組合待簽名字符串
     string_to_sign = timestamp + ":" + request_body
     
-    # 计算签名
+    # 計算簽名
     computed_signature = hmac.new(
         secret.encode('utf-8'),
         string_to_sign.encode('utf-8'),
         hashlib.sha256
     ).hexdigest()
     
-    # 比较签名
+    # 比較簽名
     return hmac.compare_digest(computed_signature, signature)
 ```
 
-### 处理不同类型的消息
+### 處理不同類型的訊息
 
-根据 `msgType` 字段处理不同类型的消息：
+根據 `msgType` 字段處理不同類型的訊息：
 
 ```python
 def process_message(message):
     msg_type = message.get("msgType")
     
-    if msg_type == 1:  # 文本消息
+    if msg_type == 1:  # 文字訊息
         process_text_message(message)
-    elif msg_type == 3:  # 图片消息
+    elif msg_type == 3:  # 圖片訊息
         process_image_message(message)
-    elif msg_type == 34:  # 语音消息
+    elif msg_type == 34:  # 語音訊息
         process_voice_message(message)
-    elif msg_type == 43:  # 视频消息
+    elif msg_type == 43:  # 視頻訊息
         process_video_message(message)
-    elif msg_type == 47:  # 表情消息
+    elif msg_type == 47:  # 表情訊息
         process_emoji_message(message)
-    elif msg_type == 49:  # 链接消息
+    elif msg_type == 49:  # 鏈接訊息
         process_link_message(message)
-    elif msg_type == 10000:  # 系统通知
+    elif msg_type == 10000:  # 系統通知
         process_system_notification(message)
-    elif msg_type == 10002:  # 撤回消息
+    elif msg_type == 10002:  # 撤回訊息
         process_recall_message(message)
     else:
         process_unknown_message(message)
 ```
 
-### 消息去重
+### 訊息去重
 
-系统已实现消息去重机制，但您仍应在自己的服务中实现消息去重，以防止重复处理：
+系統已實現訊息去重機制，但您仍應在自己的服務中實現訊息去重，以防止重複處理：
 
 ```python
 processed_messages = set()
@@ -210,7 +210,7 @@ def is_duplicate(message_id):
         return True
     
     processed_messages.add(message_id)
-    # 维护一个固定大小的集合，避免内存泄漏
+    # 維護一個固定大小的集合，避免內存泄漏
     if len(processed_messages) > 10000:
         processed_messages.pop()
     
@@ -220,39 +220,39 @@ def process_message(message):
     message_id = message.get("msgId")
     
     if is_duplicate(message_id):
-        print(f"跳过重复消息: {message_id}")
+        print(f"跳過重複訊息: {message_id}")
         return
     
-    # 处理消息...
+    # 處理訊息...
 ```
 
 ## 安全性
 
-### 签名验证
+### 簽名驗證
 
-始终验证请求签名，确保请求来自合法来源。
+始終驗證請求簽名，確保請求來自合法來源。
 
 ### HTTPS
 
-强烈建议使用 HTTPS 协议保护数据传输安全。
+強烈建議使用 HTTPS 協議保護數據傳輸安全。
 
-### IP 白名单
+### IP 白名單
 
-可以设置 IP 白名单，只接受来自特定 IP 地址的请求。
+可以設置 IP 白名單，只接受來自特定 IP 地址的請求。
 
-### 敏感数据处理
+### 敏感數據處理
 
-妥善处理和存储接收到的敏感数据，遵守相关的数据保护法规。
+妥善處理和存儲接收到的敏感數據，遵守相關的數據保護法規。
 
-## 错误处理
+## 錯誤處理
 
-### 重试机制
+### 重試機制
 
-系统会根据配置的重试次数，在请求失败时进行重试。重试间隔会随着重试次数增加而增加（指数退避）。
+系統會根據配置的重試次數，在請求失敗時進行重試。重試間隔會隨著重試次數增加而增加（指數退避）。
 
-### 日志记录
+### 日誌記錄
 
-记录所有 Webhook 请求和响应，以便排查问题：
+記錄所有 Webhook 請求和響應，以便排查問題：
 
 ```python
 import logging
@@ -262,33 +262,33 @@ logger = logging.getLogger("webhook")
 
 def handle_webhook(request):
     try:
-        # 记录请求
+        # 記錄請求
         logger.info(f"Received webhook: {request.body}")
         
-        # 处理请求
+        # 處理請求
         process_message(request.json())
         
-        # 记录成功
+        # 記錄成功
         logger.info("Webhook processed successfully")
         
         return {"status": "success"}, 200
     except Exception as e:
-        # 记录错误
+        # 記錄錯誤
         logger.error(f"Error processing webhook: {str(e)}", exc_info=True)
         
         return {"status": "error", "message": str(e)}, 500
 ```
 
-## 最佳实践
+## 最佳實踐
 
-1. **快速响应**：尽快返回 HTTP 200 状态码，将耗时操作放入后台任务队列
-2. **消息去重**：实现消息去重机制，避免重复处理
-3. **异步处理**：使用异步处理框架提高并发能力
-4. **监控告警**：设置监控和告警，及时发现问题
-5. **定期清理**：定期清理历史数据，避免存储空间耗尽
-6. **容错处理**：妥善处理各种异常情况，确保服务稳定性
+1. **快速響應**：儘快返回 HTTP 200 狀態碼，將耗時操作放入後台任務隊列
+2. **訊息去重**：實現訊息去重機制，避免重複處理
+3. **異步處理**：使用異步處理框架提高並發能力
+4. **監控告警**：設置監控和告警，及時發現問題
+5. **定期清理**：定期清理歷史數據，避免存儲空間耗盡
+6. **容錯處理**：妥善處理各種異常情況，確保服務穩定性
 
-## 示例代码
+## 示例代碼
 
 ### Python (Flask) 示例
 
@@ -303,7 +303,7 @@ import queue
 
 app = Flask(__name__)
 
-# 消息队列
+# 訊息隊列
 message_queue = queue.Queue()
 
 # 配置
@@ -311,12 +311,12 @@ WEBHOOK_SECRET = "your_secret_key"
 PROCESSED_MESSAGES = set()
 MAX_QUEUE_SIZE = 1000
 
-# 消息处理线程
+# 訊息處理線程
 def message_processor():
     while True:
         try:
             message = message_queue.get(timeout=1)
-            # 处理消息
+            # 處理訊息
             process_message(message)
             message_queue.task_done()
         except queue.Empty:
@@ -324,41 +324,41 @@ def message_processor():
         except Exception as e:
             print(f"Error processing message: {e}")
 
-# 启动处理线程
+# 啟動處理線程
 threading.Thread(target=message_processor, daemon=True).start()
 
 @app.route('/webhook/receiver', methods=['POST'])
 def webhook_receiver():
-    # 获取请求数据
+    # 獲取請求數據
     timestamp = request.headers.get('X-Webhook-Timestamp')
     signature = request.headers.get('X-Webhook-Signature')
     body = request.get_data(as_text=True)
     
-    # 验证签名
+    # 驗證簽名
     if not verify_signature(body, timestamp, signature, WEBHOOK_SECRET):
         return jsonify({"status": "error", "message": "Invalid signature"}), 401
     
-    # 解析消息
+    # 解析訊息
     try:
         message = json.loads(body)
     except json.JSONDecodeError:
         return jsonify({"status": "error", "message": "Invalid JSON"}), 400
     
-    # 检查消息ID
+    # 檢查訊息ID
     message_id = message.get("msgId")
     if not message_id:
         return jsonify({"status": "error", "message": "Missing message ID"}), 400
     
-    # 检查是否重复消息
+    # 檢查是否重複訊息
     if message_id in PROCESSED_MESSAGES:
         return jsonify({"status": "success", "message": "Duplicate message"}), 200
     
-    # 添加到已处理集合
+    # 添加到已處理集合
     PROCESSED_MESSAGES.add(message_id)
     if len(PROCESSED_MESSAGES) > MAX_QUEUE_SIZE:
         PROCESSED_MESSAGES.pop()
     
-    # 将消息加入队列异步处理
+    # 將訊息加入隊列異步處理
     try:
         message_queue.put(message, block=False)
     except queue.Full:
@@ -368,26 +368,26 @@ def webhook_receiver():
     return jsonify({"status": "success"}), 200
 
 def process_message(message):
-    # 根据消息类型处理
+    # 根據訊息類型處理
     msg_type = message.get("msgType")
     
-    if msg_type == 1:  # 文本消息
+    if msg_type == 1:  # 文字訊息
         handle_text_message(message)
-    elif msg_type == 3:  # 图片消息
+    elif msg_type == 3:  # 圖片訊息
         handle_image_message(message)
-    # 处理其他消息类型...
+    # 處理其他訊息類型...
 
 def handle_text_message(message):
     content = message.get("content")
     from_user = message.get("fromUser")
-    print(f"收到来自 {from_user} 的文本消息: {content}")
-    # 处理文本消息的业务逻辑...
+    print(f"收到來自 {from_user} 的文字訊息: {content}")
+    # 處理文字訊息的業務邏輯...
 
 def handle_image_message(message):
     content = message.get("content")
     from_user = message.get("fromUser")
-    print(f"收到来自 {from_user} 的图片消息: {content}")
-    # 处理图片消息的业务逻辑...
+    print(f"收到來自 {from_user} 的圖片訊息: {content}")
+    # 處理圖片訊息的業務邏輯...
 
 def verify_signature(body, timestamp, signature, secret):
     if not all([body, timestamp, signature, secret]):
@@ -421,7 +421,7 @@ const WEBHOOK_SECRET = 'your_secret_key';
 const PROCESSED_MESSAGES = new Set();
 const MAX_SET_SIZE = 10000;
 
-// 验证签名
+// 驗證簽名
 function verifySignature(body, timestamp, signature, secret) {
   if (!body || !timestamp || !signature || !secret) {
     return false;
@@ -439,7 +439,7 @@ function verifySignature(body, timestamp, signature, secret) {
   );
 }
 
-// 消息处理
+// 訊息處理
 function processMessage(message) {
   const msgType = message.msgType;
   
@@ -450,62 +450,62 @@ function processMessage(message) {
     case 3:
       handleImageMessage(message);
       break;
-    // 处理其他消息类型...
+    // 處理其他訊息類型...
     default:
-      console.log(`未知消息类型: ${msgType}`);
+      console.log(`未知訊息類型: ${msgType}`);
   }
 }
 
 function handleTextMessage(message) {
   const content = message.content;
   const fromUser = message.fromUser;
-  console.log(`收到来自 ${fromUser} 的文本消息: ${content}`);
-  // 处理文本消息的业务逻辑...
+  console.log(`收到來自 ${fromUser} 的文字訊息: ${content}`);
+  // 處理文字訊息的業務邏輯...
 }
 
 function handleImageMessage(message) {
   const content = message.content;
   const fromUser = message.fromUser;
-  console.log(`收到来自 ${fromUser} 的图片消息: ${content}`);
-  // 处理图片消息的业务逻辑...
+  console.log(`收到來自 ${fromUser} 的圖片訊息: ${content}`);
+  // 處理圖片訊息的業務邏輯...
 }
 
-// Webhook 接收端点
+// Webhook 接收端點
 app.post('/webhook/receiver', (req, res) => {
-  // 获取请求数据
+  // 獲取請求數據
   const timestamp = req.headers['x-webhook-timestamp'];
   const signature = req.headers['x-webhook-signature'];
   const body = req.body;
   
-  // 验证签名
+  // 驗證簽名
   if (!verifySignature(body, timestamp, signature, WEBHOOK_SECRET)) {
     return res.status(401).json({ status: 'error', message: 'Invalid signature' });
   }
   
-  // 检查消息ID
+  // 檢查訊息ID
   const messageId = body.msgId;
   if (!messageId) {
     return res.status(400).json({ status: 'error', message: 'Missing message ID' });
   }
   
-  // 检查是否重复消息
+  // 檢查是否重複訊息
   if (PROCESSED_MESSAGES.has(messageId)) {
     return res.status(200).json({ status: 'success', message: 'Duplicate message' });
   }
   
-  // 添加到已处理集合
+  // 添加到已處理集合
   PROCESSED_MESSAGES.add(messageId);
   if (PROCESSED_MESSAGES.size > MAX_SET_SIZE) {
     const firstItem = PROCESSED_MESSAGES.values().next().value;
     PROCESSED_MESSAGES.delete(firstItem);
   }
   
-  // 异步处理消息
+  // 異步處理訊息
   setImmediate(() => {
     try {
       processMessage(body);
     } catch (error) {
-      console.error(`处理消息错误: ${error}`);
+      console.error(`處理訊息錯誤: ${error}`);
     }
   });
   
@@ -513,53 +513,53 @@ app.post('/webhook/receiver', (req, res) => {
   return res.status(200).json({ status: 'success' });
 });
 
-// 启动服务器
+// 啟動伺服器
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
-  console.log(`Webhook 服务器运行在端口 ${PORT}`);
+  console.log(`Webhook 伺服器運行在端口 ${PORT}`);
 });
 ```
 
-## 常见问题
+## 常見問題
 
-### 1. 为什么我没有收到 Webhook 消息？
+### 1. 為什麼我沒有收到 Webhook 訊息？
 
 可能的原因：
-- Webhook URL 不可访问（检查防火墙、网络设置）
-- 服务器响应超时（确保在 5 秒内返回响应）
-- 签名验证失败（检查密钥是否正确）
-- 消息类型过滤（检查 MessageTypes 配置）
+- Webhook URL 不可訪問（檢查防火牆、網絡設置）
+- 伺服器響應超時（確保在 5 秒內返回響應）
+- 簽名驗證失敗（檢查密鑰是否正確）
+- 訊息類型過濾（檢查 MessageTypes 配置）
 
-### 2. 如何处理大量并发消息？
+### 2. 如何處理大量並發訊息？
 
-- 使用异步处理框架（如 Celery、Bull 等）
-- 实现消息队列（RabbitMQ、Redis 等）
-- 水平扩展接收服务器
-- 优化数据库操作
+- 使用異步處理框架（如 Celery、Bull 等）
+- 實現訊息隊列（RabbitMQ、Redis 等）
+- 水平擴展接收伺服器
+- 優化數據庫操作
 
-### 3. 如何确保消息不丢失？
+### 3. 如何確保訊息不丟失？
 
-- 实现消息持久化存储
-- 使用可靠的消息队列
-- 实现确认机制
-- 定期检查消息处理状态
+- 實現訊息持久化存儲
+- 使用可靠的訊息隊列
+- 實現確認機制
+- 定期檢查訊息處理狀態
 
-### 4. 如何测试 Webhook 接收功能？
+### 4. 如何測試 Webhook 接收功能？
 
-- 使用 `/v1/webhook/Test` API 发送测试消息
-- 使用工具如 Postman、curl 模拟请求
-- 设置本地测试环境（使用 ngrok 等工具暴露本地服务）
+- 使用 `/v1/webhook/Test` API 發送測試訊息
+- 使用工具如 Postman、curl 模擬請求
+- 設置本地測試環境（使用 ngrok 等工具暴露本地服務）
 
-### 5. 为什么会收到重复消息？
+### 5. 為什麼會收到重複訊息？
 
-- 系统重试机制（请求失败时会重试）
-- 网络问题导致重复发送
-- 系统重启后重新处理未确认消息
+- 系統重試機制（請求失敗時會重試）
+- 網絡問題導致重複發送
+- 系統重啟後重新處理未確認訊息
 
-### 6. 如何优化 Webhook 性能？
+### 6. 如何優化 Webhook 性能？
 
-- 快速响应，异步处理
-- 使用连接池
-- 实现缓存机制
-- 定期清理过期数据
-- 使用高效的数据结构和算法 
+- 快速響應，異步處理
+- 使用連接池
+- 實現緩存機制
+- 定期清理過期數據
+- 使用高效的數據結構和算法 
