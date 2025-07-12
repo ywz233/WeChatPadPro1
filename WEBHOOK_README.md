@@ -1,117 +1,161 @@
-# 微信機器人Webhook接收服務
+# Flask Webhook Receiver
 
-這是一個用於接收微信機器人訊息推送的Webhook服務，可以接收並處理來自WeChatPadPro的各類訊息通知。
+一个轻量级的 Flask Webhook 接收服务，支持签名验证、日志记录、消息内容格式化及过滤自身消息等功能，适用于各种内部系统或第三方服务的消息回调处理。
 
-## 功能特點
+## 📦 特性
 
-- 支持接收微信各種類型的訊息（文字、圖片、語音、視頻等）
-- 支持簽名驗證，確保訊息安全性
-- 詳細的日誌記錄
-- 可自定義訊息處理邏輯
-- 提供健康檢查接口
+- 支持 Webhook 签名验证（HMAC-SHA256）
+- 日志输出到文件和控制台
+- 可配置接收消息类型及是否接收自己发送的消息
+- 自动格式化显示接收到的消息内容
+- 支持失败重试配置和超时限制
 
-## 系統要求
+## 🧾 示例配置
 
-- Python 3.6+
-- 可從外部訪問的伺服器（如果需要公網訪問）
-
-## 快速開始
-
-### Windows用戶
-
-直接運行`start_webhook.cmd`批處理文件即可快速啟動服務：
-
-```
-雙擊運行 start_webhook.cmd
-```
-
-### 手動啟動
-
-1. 安裝依賴
-
-```bash
-pip install -r requirements.txt
-```
-
-2. 配置環境變量（可選）
-
-```bash
-# Windows
-set PORT=8000
-set WEBHOOK_SECRET=your_secret_key
-set WEBHOOK_PATH=/webhook
-
-# Linux/Mac
-export PORT=8000
-export WEBHOOK_SECRET=your_secret_key
-export WEBHOOK_PATH=/webhook
-```
-
-3. 啟動服務
-
-```bash
-python webhook_server.py
-```
-
-## 配置說明
-
-服務啟動後會顯示詳細的配置信息，包括如何在WeChatPadPro項目中配置對應的Webhook。
-
-### 環境變量
-
-| 變量名 | 說明 | 默認值 |
-|-------|------|-------|
-| PORT | 服務監聽端口 | 8000 |
-| WEBHOOK_SECRET | 簽名密鑰 | your_secret_key |
-| WEBHOOK_PATH | Webhook接收路徑 | /webhook |
-
-### 在WeChatPadPro中配置
-
-使用以下API配置Webhook：
-
-```
-POST /api/webhook/config?key=YOUR_WECHAT_KEY
-
+```json
 {
-  "url": "http://您的伺服器IP:8000/webhook",
-  "secret": "your_secret_key",
-  "enabled": true,
-  "timeout": 10,
-  "retryCount": 3,
-  "messageTypes": [],  // 空數組表示接收所有類型的訊息
-  "includeSelfMessage": true  // 設置為true可以接收自己發送的訊息
+  "URL": "http://192.168.0.101:8000/webhook",
+  "Secret": "your_secret_key",
+  "Enabled": true,
+  "Timeout": 10,
+  "RetryCount": 3,
+  "MessageTypes": ["*"],
+  "IncludeSelfMessage": true
 }
 ```
 
-## 訊息處理
+## 🚀 快速开始
 
-如需自定義訊息處理邏輯，請修改`webhook_server.py`文件中的`handle_message`函數：
+### 1. 安装依赖
 
-```python
-def handle_message(message):
-    # 自定義處理邏輯
-    # ...
-    return True
+```bash
+pip install flask
 ```
 
-## 日誌
+### 2. 启动服务
 
-服務運行日誌保存在`webhook.log`文件中，包含接收到的所有訊息詳情。
+```bash
+python webhook.py
+```
 
-## 測試與狀態查詢
+服务默认监听在 `http://0.0.0.0:8000/webhook`
 
-- 測試Webhook連通性：
-  ```
-  GET /api/webhook/test?key=YOUR_WECHAT_KEY
-  ```
+## 💻 示例代码
 
-- 查看Webhook配置狀態：
-  ```
-  GET /api/webhook/status?key=YOUR_WECHAT_KEY
-  ```
+```python
+from flask import Flask, request, jsonify
+import hmac
+import hashlib
+import logging
+from datetime import datetime
 
-## 注意事項
+app = Flask(__name__)
 
-- 確保伺服器可以從外部訪問（如需公網訪問，請配置端口轉發）
-- 如果使用了簽名密鑰，確保與WeChatPadPro配置中的一致
-- 建議在生產環境中使用HTTPS以確保通信安全 
+WEBHOOK_SECRET = "your_secret_key"
+INCLUDE_SELF_MESSAGE = True
+
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s [%(levelname)s] %(message)s',
+    handlers=[
+        logging.FileHandler("webhook.log", encoding='utf-8'),
+        logging.StreamHandler()
+    ]
+)
+
+def verify_signature(data, signature, secret, timestamp):
+    mac = hmac.new(secret.encode('utf-8'), digestmod=hashlib.sha256)
+    mac.update(timestamp.encode('utf-8'))
+    mac.update(data)
+    expected = mac.hexdigest()
+    return hmac.compare_digest(expected, signature)
+
+def format_message(data):
+    msg_id = data.get("msgId")
+    from_user = data.get("fromUser")
+    to_user = data.get("toUser")
+    msg_type = data.get("msgType")
+    timestamp = data.get("timestamp")
+    content = data.get("content", "")
+
+    if isinstance(content, dict):
+        content = content.get("str", "")
+    elif not isinstance(content, str):
+        content = str(content)
+
+    try:
+        time_str = datetime.fromtimestamp(timestamp).strftime("%Y-%m-%d %H:%M:%S")
+    except:
+        time_str = str(timestamp)
+
+    return f"""✅ Received message:
+🆔 MsgID: {msg_id}
+👤 From: {from_user}
+🎯 To: {to_user}
+🕒 Time: {time_str}
+📨 Type: {msg_type}
+💬 Content: {content}
+"""
+
+@app.route("/webhook", methods=["POST"])
+def webhook():
+    raw_data = request.data
+    headers = request.headers
+
+    signature = headers.get('X-Webhook-Signature')
+    timestamp = headers.get('X-Webhook-Timestamp')
+
+    if WEBHOOK_SECRET:
+        if not signature or not timestamp:
+            return jsonify({"error": "Missing signature or timestamp"}), 400
+        if not verify_signature(raw_data, signature, WEBHOOK_SECRET, timestamp):
+            logging.warning("❌ Signature verification failed")
+            return jsonify({"error": "Invalid signature"}), 403
+
+    try:
+        data = request.get_json(force=True)
+
+        if not INCLUDE_SELF_MESSAGE and data.get('isSelfMsg'):
+            return jsonify({"status": "ignored", "reason": "self message skipped"}), 200
+
+        log_msg = format_message(data)
+        logging.info(log_msg)
+
+        return jsonify({"status": "ok"}), 200
+
+    except Exception as e:
+        logging.exception("❌ Error processing webhook:")
+        return jsonify({"error": str(e)}), 500
+
+if __name__ == "__main__":
+    logging.info("🚀 Webhook server is running on port 8000...")
+    app.run(host="0.0.0.0", port=8000)
+```
+
+## 📝 日志输出格式
+
+每条接收的消息会记录类似格式：
+
+```
+✅ Received message:
+🆔 MsgID: 123456
+👤 From: user_a
+🎯 To: user_b
+🕒 Time: 2025-07-12 12:00:00
+📨 Type: text
+💬 Content: Hello world!
+```
+
+## ⚙️ 配置说明
+
+| 配置项               | 描述                                      |
+|----------------------|-------------------------------------------|
+| `Secret`             | 用于签名验证的密钥（可选但推荐）           |
+| `IncludeSelfMessage` | 是否处理自己发送的消息                     |
+| `Timeout`            | 推送请求超时时间（1~30秒）                |
+| `RetryCount`         | 推送失败的最大重试次数                     |
+| `MessageTypes`       | 接收的消息类型，`["*"]` 表示全部            |
+
+## 📄 License
+
+本项目可自由修改与部署，遵循 MIT 开源协议。
