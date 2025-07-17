@@ -1,0 +1,9 @@
+{
+    "URL": "http://192.168.0.101:8000/webhook",
+    "Secret": "your_secret_key",
+    "Enabled": true,
+    "Timeout": 10,
+    "RetryCount": 3,
+    "MessageTypes": ["*"],
+    "IncludeSelfMessage": true
+  }

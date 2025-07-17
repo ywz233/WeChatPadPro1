@@ -181,33 +181,8 @@ cd WeChatPadPro/deploy
 
 ### 2. 配置環境變數
 
-編輯 `.env` 文件，根據您的需求修改配置：
+編輯 `.env.example複雜為.env` 文件，根據您的需求修改配置：
 
-```ini
-# MySQL配置
-MYSQL_ROOT_PASSWORD=root123456
-MYSQL_DATABASE=weixin
-MYSQL_USER=weixin
-MYSQL_PASSWORD=123456
-MYSQL_PORT=3306
-
-# Redis配置
-REDIS_PASSWORD=123456
-REDIS_PORT=6379
-
-# WeChat Pad Pro配置
-WECHAT_PORT=8080
-DB_HOST=wechatpadpro_mysql
-DB_PORT=3306
-DB_DATABASE=weixin
-DB_USERNAME=weixin
-DB_PASSWORD=123456
-REDIS_HOST=wechatpadpro_redis
-REDIS_DB=0
-
-# 管理員密鑰（建議使用複雜的隨機字符串）
-ADMIN_KEY=999222
-```
 
 ### 3. 啟動服務
 
@@ -324,6 +299,22 @@ WeChatPadPro 是基於 WeChat Pad 協議的高級 WeChat 管理工具，支援�
 ---
 
 ## 📅 更新日誌 (CHANGELOG)
+### 861v1.0.0 (2025-07-18) -
+- **修復webhook頻繁掉綫**
+- **修復批量同步大量消息**
+
+- **新增視頻發送新接口**
+
+## 📢 重要！老用戶必讀
+
+> **如果您是長期使用WeChatPadPro的用戶，請先閱讀本節內容！**
+
+為避免首次啓動或長時間未使用後啓動時收到大量過期消息，我們強烈建議：
+
+1. 先運行 `start_webhook_client.bat`(Windows) 或 `start_webhook_client.sh`(MacOS/Linux) 啓動消息緩存服務
+2. 然後再啓動主程序
+
+**詳細教程：** 請參閱 [`usage_guide_for_old_users.md`](usage_guide_for_old_users.md) 文件
 
 ### v1.1.0 (2025-07-06) - Webhook系統重大更新
 
@@ -366,7 +357,7 @@ WeChatPadPro 是基於 WeChat Pad 協議的高級 WeChat 管理工具，支援�
 
 ---
 
-## 🚀 v860 版本更新
+## 🚀 v861 版本更新
 
 > **[查看所有版本發布](https://github.com/WeChatPadPro/WeChatPadPro/releases)** - 獲取最新版本下載和更新說明
 
@@ -437,7 +428,7 @@ WeChatPadPro v860 支持以下操作系統和CPU架構：
      ```
 4. **運行**：
    - Windows: 雙擊 `wechatpadpro.exe` 或在命令行中運行
-   - Linux/macOS/BSD: 執行 `./wechatpadpro`
+   - Linux/macOS/BSD: 執行 `./wechatpadpro-linux-amd64-vios18.61-861`
 
 ### 5. 功能使用說明
 
@@ -458,33 +449,7 @@ Content-Type: multipart/form-data
 }
 ```
 
-#### Webhook配置
 
-Webhook 可以將微信訊息即時推送到您指定的URL。配置方法：
-
-1. 編輯 `webhook_config.json` 檔案：
-```json
-{
-  "enabled": true,
-  "url": "http://您的服務器地址/webhook/receiver",
-  "events": ["message", "login", "logout", "friend_request"],
-  "retry_count": 3,
-  "retry_interval": 5,
-  "secret_key": "您的密鑰"
-}
-```
-
-2. 接收Webhook訊息的服務器需要處理POST請求，訊息格式為：
-```json
-{
-  "event_type": "message",
-  "timestamp": 1656789012,
-  "data": {
-    // 事件相關數據
-  },
-  "signature": "訊息簽名"
-}
-```
 
 3. **Webhook測試客戶端**：
    我們提供了一個開源的Webhook測試客戶端，幫助您快速測試和接收Webhook訊息：
@@ -763,18 +728,4 @@ mysql -u root -p
 - 接入長期自動化專案需穩定API支援
 - 合規審核與企業授權申請協助
 
-## 🧪 測試指南
-
-推薦使用[ApiPOST經典版(v7.2.X)](https://www.apipost.cn/download.html):
-
-1. 導入[WeChat849.apipost.v7.json](./static/swagger/WeChat849.apipost.v7.json)
-2. 設置環境變數:
-   - WS_URL: WebSocket基礎URL
-   - ADMIN_KEY: 管理介面KEY
-   - SOCKS5: 本地代理地址
-3. 調用介面獲取TOKEN_KEY
-
-![ApiPOST設置1](./static/doc/apipost1.png)
-
-![ApiPOST設置2](./static/doc/apipost2.png)
-
+#

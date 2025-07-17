@@ -6,13 +6,54 @@ services:
     container_name: wechatpadpro
     restart: always
     ports:
+      - "${WECHAT_PORT:-8080}:8080"
       - "${PORT:-1238}:1238"
     env_file:
       - .env
     environment:
       - DB_HOST=mysql
       - REDIS_HOST=redis
-      - MYSQL_CONNECT_STR=weixin:123456@tcp(mysql:3306)/weixin?charset=utf8mb4&parseTime=true&loc=Local
+      - TZ=${TZ}
+      - GH_WXID=${GH_WXID}
+      - ADMIN_KEY=${ADMIN_KEY}
+      - WORKER_POOL_SIZE=${WORKER_POOL_SIZE}
+      - MAX_WORKER_TASK_LEN=${MAX_WORKER_TASK_LEN}
+      - WEB_DOMAIN=${WEB_DOMAIN}
+      - WEB_TASK_NAME=${WEB_TASK_NAME}
+      - WEB_TASK_APP_NUMBER=${WEB_TASK_APP_NUMBER}
+      - NEWS_SYN_WXID=${NEWS_SYN_WXID}
+      - DT=${DT}
+      - TOPIC=${TOPIC}
+      - ROCKET_MQ_ENABLED=${ROCKET_MQ_ENABLED}
+      - ROCKET_MQ_HOST=${ROCKET_MQ_HOST}
+      - ROCKET_ACCESS_KEY=${ROCKET_ACCESS_KEY}
+      - ROCKET_SECRET_KEY=${ROCKET_SECRET_KEY}
+      - RABBIT_MQ_ENABLED=${RABBIT_MQ_ENABLED}
+      - RABBIT_MQ_URL=${RABBIT_MQ_URL}
+      - KAFKA_ENABLED=${KAFKA_ENABLED}
+      - KAFKA_URL=${KAFKA_URL}
+      - KAFKA_USERNAME=${KAFKA_USERNAME}
+      - KAFKA_PASSWORD=${KAFKA_PASSWORD}
+      - TASK_RETRY_COUNT=${TASK_RETRY_COUNT}
+      - TASK_RETRY_INTERVAL=${TASK_RETRY_INTERVAL}
+      - HEARTBEAT_INTERVAL=${HEARTBEAT_INTERVAL}
+      - AUTO_AUTH_INTERVAL=${AUTO_AUTH_INTERVAL}
+      - AUTO_SYNC_INTERVAL_MINUTES=${AUTO_SYNC_INTERVAL_MINUTES}
+      - TASK_EXEC_WAIT_TIMES=${TASK_EXEC_WAIT_TIMES}
+      - QUEUE_EXPIRE_TIME=${QUEUE_EXPIRE_TIME}
+      - WS_HANDSHAKE_TIMEOUT=${WS_HANDSHAKE_TIMEOUT}
+      - WS_READ_BUFFER_SIZE=${WS_READ_BUFFER_SIZE}
+      - WS_WRITE_BUFFER_SIZE=${WS_WRITE_BUFFER_SIZE}
+      - WS_READ_DEADLINE=${WS_READ_DEADLINE}
+      - WS_WRITE_DEADLINE=${WS_WRITE_DEADLINE}
+      - WS_PING_INTERVAL=${WS_PING_INTERVAL}
+      - WS_CONNECTION_CHECK_INTERVAL=${WS_CONNECTION_CHECK_INTERVAL}
+      - WS_MAX_MESSAGE_SIZE=${WS_MAX_MESSAGE_SIZE}
+      - CLUSTER_NAME=${CLUSTER_NAME}
+      - ZK_ADDR=${ZK_ADDR}
+      - ETCD_ADDR=${ETCD_ADDR}
+      - DISABLED_CMD_LIST=${DISABLED_CMD_LIST}
+      - MYSQL_CONNECT_STR=${MYSQL_CONNECT_STR}
     volumes:
       - ./.env:/app/.env
     depends_on:
@@ -24,15 +65,18 @@ services:
       - wechatpadpro-network
 
   mysql:
-    image: wechatpadpro/mysql:8.0
+    image: mysql:8.0
     container_name: mysql
     restart: always
-    env_file:
-      - .env
-    volumes:
-      - mysql_data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-root123456}
+      MYSQL_DATABASE: ${MYSQL_DATABASE:-weixin}
+      MYSQL_USER: ${MYSQL_USER:-weixin}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD:-weixin123}
     ports:
       - "${MYSQL_PORT:-3306}:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
     healthcheck:
       test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-p${MYSQL_ROOT_PASSWORD:-root123456}"]
       interval: 5s
@@ -42,18 +86,16 @@ services:
       - wechatpadpro-network
 
   redis:
-    image: wechatpadpro/redis:6
+    image: redis:6
     container_name: redis
     restart: always
-    env_file:
-      - .env
-    volumes:
-      - redis_data:/data
-    command: ["redis-server", "--appendonly", "yes", "--requirepass", "${REDIS_PASSWORD:-123456}", "--maxmemory", "512mb", "--maxmemory-policy", "volatile-lru"]
+    command: redis-server --appendonly yes
     ports:
       - "${REDIS_PORT:-6379}:6379"
+    volumes:
+      - redis_data:/data
     healthcheck:
-      test: ["CMD", "redis-cli", "-a", "${REDIS_PASSWORD:-123456}", "ping"]
+      test: ["CMD", "redis-cli", "ping"]
       interval: 5s
       timeout: 5s
       retries: 20
