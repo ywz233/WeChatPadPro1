@@ -294,7 +294,113 @@ WeChatPadPro 是基於 WeChat Pad 協議的高級 WeChat 管理工具，支援�
 ---
 
 ## 📅 更新日誌 (CHANGELOG)
+## 🔄 **RabbitMQ优化更新**
+### v1.1.0 (2025-07-27)
+### 1. **连接管理优化**
+# RabbitMQ和登录验证码更新说明
 
+## 🔄 **RabbitMQ优化更新**
+
+### 1. **连接管理优化**
+- ✅ **智能重连机制**：只在连接确实断开时才重连，避免频繁重连
+- ✅ **连接健康检查**：实时监控连接状态，自动检测连接健康度
+- ✅ **心跳监控**：增加心跳时间记录，超过10秒无心跳认为连接不健康
+- ✅ **并发安全**：使用互斥锁确保重连过程的线程安全
+
+### 2. **错误处理改进**
+- ✅ **精确错误识别**：只对包含"connection"或"channel"的错误进行重连
+- ✅ **重试机制**：连接失败后自动重试一次
+- ✅ **详细日志**：增加推送编号，便于追踪消息推送状态
+
+### 3. **性能优化**
+- ✅ **跳过Redis操作**：新增配置选项，可跳过Redis操作提高性能
+- ✅ **队列声明优化**：使用更安全的队列声明方式
+- ✅ **消息持久化**：确保消息在服务器重启后不丢失
+
+## 🔐 **登录验证码流程更新**
+
+### 1. **新增自动验证码处理API**
+
+#### `AutoLoginVerifyCodeApi` - 自动处理验证码
+```bash
+POST /api/login/verify/auto
+```
+
+**功能特点：**
+- ✅ **自动获取ticket**：用户无需提供ticket，系统自动从Redis获取
+- ✅ **自动补全data62**：如果data62为空，自动根据设备信息生成
+- ✅ **多重ticket获取**：优先从Redis获取，失败后从状态缓存获取
+- ✅ **智能参数验证**：自动检查必要参数，提供友好错误提示
+
+#### `LoginVerifyCodeApi` - 手动验证码处理
+```bash
+POST /api/login/verify/manual
+```
+
+**功能特点：**
+- ✅ **手动ticket支持**：支持用户手动提供ticket
+- ✅ **自动ticket补全**：如果未提供ticket，自动从多个来源获取
+- ✅ **多重数据源**：从Redis、状态缓存、用户信息、连接管理器等多个来源获取ticket
+- ✅ **完整参数验证**：确保所有必要参数都已提供
+
+### 2. **验证码处理流程**
+
+#### 步骤1：扫码登录
+```bash
+# 获取登录二维码
+POST /api/login/qr/new
+{
+  "proxy": "http://proxy:port",  // 可选：代理设置
+  "deviceName": "iPhone",        // 可选：设备名称
+  "deviceId": "device_id"        // 可选：设备ID
+}
+```
+
+#### 步骤2：检查登录状态
+```bash
+# 检查扫码状态
+GET /api/login/status?key=your-uuid
+```
+
+**返回状态说明：**
+- `code: 200` - 扫码成功，等待确认
+- `code: -3` - 需要验证码，返回ticket
+- `code: 300` - 二维码不存在或已过期
+
+#### 步骤3：提交验证码（自动模式）
+```bash
+# 自动处理验证码（推荐）
+POST /api/login/verify/auto?key=your-uuid
+{
+  "uuid": "your-uuid",
+  "code": "123456"  // 验证码
+}
+```
+
+#### 步骤4：提交验证码（手动模式）
+```bash
+# 手动处理验证码
+POST /api/login/verify/manual?key=your-uuid
+{
+  "uuid": "your-uuid",
+  "code": "123456",     // 验证码
+  "ticket": "ticket",   // 可选：手动提供ticket
+  "data62": "data62"    // 可选：手动提供data62
+}
+```
+
+### 3. **Ticket获取策略**
+
+#### 优先级顺序：
+1. **Redis缓存**：`db.GetTicketForKey(uuid)`
+2. **状态缓存**：`db.GetCheckStatusCache(uuid).Ticket`
+3. **用户信息**：`userInfo.Ticket`
+4. **连接管理器**：从活跃连接中获取ticket
+
+#### 自动补全策略：
+- **data62自动生成**：根据设备IMEI自动生成data62
+- **ticket自动获取**：从多个数据源自动获取ticket
+- **参数验证**：确保所有必要参数都已提供
 ### v1.1.0 (2025-07-06) - Webhook系統重大更新
 
 #### 🔥 重要更新 - Webhook系統全面優化
