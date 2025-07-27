@@ -1,0 +1,6 @@
+﻿WeChatPadPro
+Version: ios18.61-861
+Build Time: 20250727_100008
+System: linux
+Architecture: riscv64
+Description: Linux RISC-V 64-bit

@@ -4,7 +4,7 @@
   <img src="static/doc/4270252wc57e-4b66-9ae3-0a81fc001255.png" alt="WeChatPadPro" width="800px">
 </div>
 
-<h1 align="center">🚀 基於 WeChat Pad 協議的高級管理工具v860</h1>
+<h1 align="center">🚀 基於 WeChat Pad 協議的高級管理工具v861</h1>
 
 <div align="center">
   <strong>🌐 <a href="https://wx.knowhub.cloud/docs/">在線演示系統</a> - 默認密碼: 12345</strong>
@@ -12,10 +12,10 @@
 
 <p align="center">
   <a href="https://github.com/WeChatPadPro/WeChatPadPro">
-    <img src="https://img.shields.io/badge/Version-860-blue?style=for-the-badge" alt="版本">
+    <img src="https://img.shields.io/badge/Version-861-blue?style=for-the-badge" alt="版本">
   </a>
   <a href="https://github.com/WeChatPadPro/WeChatPadPro">
-    <img src="https://img.shields.io/badge/iOS-18.5-brightgreen?style=for-the-badge" alt="iOS">
+    <img src="https://img.shields.io/badge/iOS-18.6-brightgreen?style=for-the-badge" alt="iOS">
   </a>
   <a href="https://t.me/+LK0JuqLxjmk0ZjRh">
     <img src="https://img.shields.io/badge/Telegram-交流群-blue?style=for-the-badge&logo=telegram" alt="Telegram">
@@ -39,6 +39,7 @@
 <p align="center">
   <a href="#-專案介紹">📋 專案介紹</a> •
   <a href="#-功能特性">📝 功能特性</a> •
+  <a href="#-系統包下載">📦 系統包下載</a> •
   <a href="#-更新日誌-changelog">📅 更新日誌</a> •
   <a href="#-快速部署-docker">🚀 Docker部署</a> •
   <a href="#-使用指南與注意事項">📖 使用說明</a> •
@@ -46,10 +47,88 @@
   <a href="#-贊助支持">💰 贊助支持</a>
 </p>
 
+<div align="center">
+  <table>
+    <tr>
+      <td align="center">
+        <a href="https://github.com/WeChatPadPro/WeChatPadPro/releases">
+          <img src="https://img.shields.io/github/downloads/WeChatPadPro/WeChatPadPro/total?style=for-the-badge&color=green" alt="Downloads">
+        </a>
+      </td>
+      <td align="center">
+        <a href="https://github.com/WeChatPadPro/WeChatPadPro/commits/main">
+          <img src="https://img.shields.io/github/last-commit/WeChatPadPro/WeChatPadPro?style=for-the-badge&color=blue" alt="Last Commit">
+        </a>
+      </td>
+      <td align="center">
+        <a href="https://github.com/WeChatPadPro/WeChatPadPro/issues">
+          <img src="https://img.shields.io/github/issues/WeChatPadPro/WeChatPadPro?style=for-the-badge&color=orange" alt="Issues">
+        </a>
+      </td>
+      <td align="center">
+        <a href="https://github.com/WeChatPadPro/WeChatPadPro/pulls">
+          <img src="https://img.shields.io/github/issues-pr/WeChatPadPro/WeChatPadPro?style=for-the-badge&color=purple" alt="Pull Requests">
+        </a>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+## 📢 加入官方交流群
+
+<div align="center">
+  <h3>🌟 加入我們的官方交流群和論壇，獲取最新版本更新、技術支援和使用教程！</h3>
+</div>
+
+<div align="center">
+
+| 💬 Telegram 交流群 | 💼 微信付費專業群 | 🔔 釘釘交流群 | 🌐 Know Hub 在線論壇 |
+|:---:|:---:|:---:|:---:|
+| <img src="./static/qrcode/diabao.JPG" width="160" alt="Telegram群二維碼" style="border-radius: 10px;"><br><br><a href="https://t.me/+LK0JuqLxjmk0ZjRh"><img src="https://img.shields.io/badge/Telegram-加入群組-0088CC?style=for-the-badge&logo=telegram&logoColor=white" alt="加入Telegram"></a><br><br>📊 成員數量: 1400+ 位用戶<br>🔔 即時更新通知<br>💡 技術問題解答<br>💬 使用經驗分享 | <img src="https://raw.githubusercontent.com/WeChatPadPro/WeChatPadPro/refs/heads/main/static/qrcode/%E5%9B%BE%E7%89%87_20250619211139.jpg" width="160" alt="微信付費入群二維碼" style="border-radius: 10px;"><br><br><div style="background: #FF6B35; color: white; padding: 8px 16px; border-radius: 20px; font-weight: bold; font-size: 14px; display: inline-block;">🔒 掃碼付費加入專業群</div><br><br>⭐ VIP技術支持<br>🚀 專屬功能體驗<br>⚡ 優先解決問題<br>🎯 高級使用技巧分享 | <img src="./static/qrcode/IMG_3817.JPG" width="160" alt="釘釘群二維碼" style="border-radius: 10px;"><br><br><a href="https://qr.dingtalk.com/action/joingroup?code=v1,k1,6uLDgyJodWIXoxwdwF3bYlv1GRj5uoC8waI6Z4PtIi0=&_dt_no_comment=1&origin=11"><img src="https://img.shields.io/badge/钉钉-加入群組-1890FF?style=for-the-badge&logo=dingtalk&logoColor=white" alt="加入钉钉"></a><br><br>💻 技術討論<br>❓ 問題解答<br>💡 使用經驗分享 | <p>探索與交流 Know Hub 的無限可能</p><br><a href="https://bbs.knowhub.cloud/"><img src="https://img.shields.io/badge/論壇-加入討論-9C27B0?style=for-the-badge&logo=discourse&logoColor=white" alt="加入論壇"></a><br><br>📚 WeChatPadPro交流群<br>💬 技術問題討論<br>📖 安裝使用指南<br>🆕 新需求反饋<br>📋 文檔中心 |
+
+</div>
+
+---
+
+## 💰 贊助支持
+
+<div align="center">
+  <h2>您的支持是我們持續更新的動力</h2>
+  <p style="font-size: 18px; margin: 20px 0;">🌟 每一份贊助都是對我們最大的鼓勵 🌟</p>
+  
+  <a href="https://book.stripe.com/00w6oHbPkc7D1rn0iJ0Jq06">
+    <img src="https://img.shields.io/badge/-%F0%9F%92%B0%20%E9%BB%9E%E6%93%8A%E8%B4%8A%E5%8A%A9-00BB00?style=for-the-badge" height="60" width="400" alt="點擊贊助" />
+  </a>
+  
+  <br><br>
+  
+  ### 🌟 成為贊助者可獲得
+  
+  - ✅ **優先技術支援** - 獲得開發者直接回應
+  - ✅ **新功能優先體驗** - 提前體驗最新功能
+  - ✅ **客製化需求支援** - 您的需求將被優先考慮
+  - ✅ **企業級多帳號解決方案** - 適合商業用戶
+  - ✅ **高級API支援** - 更多高級介面調用能力
+  
+  <br>
+  
+  ### 🚀 立即行動
+  
+  <a href="https://book.stripe.com/00w6oHbPkc7D1rn0iJ0Jq06">
+    <img src="https://img.shields.io/badge/Stripe-支付-635BFF?style=for-the-badge&logo=stripe&logoColor=white" />
+  </a>
+  
+  <p style="font-size: 16px; margin: 10px 0;">💳 安全支付 · ⚡ 即時開通</p>
+  
+  <br>
+  
+  > 💡 **提示**: 完成贊助後，請保留交易號並聯繫我們獲取贊助者特權
+</div>
+
 # WeChat API & iPad 協議使用說明與風控防範教程（2025 年更新）
 
 本教程旨在協助開發者全面了解 WeChat API 平台與 iPad 協議的登入行為、介面使用限制、風控策略及預防措施，確保使用穩定、安全、高效。
-
 ## 🚀 快速部署 (Docker)
 
 如果您想快速部署 WeChatPadPro，我們提供了 Docker 部署方案，只需幾個簡單步驟即可完成部署：
@@ -164,115 +243,97 @@ WeChatPadPro 是一個功能強大的 WeChat 管理工具，基於 WeChat Pad �
 ---
 
 
-## 📢 加入官方交流群
-
-加入我們的官方交流群，獲取最新版本更新、技術支援和使用教程！
-
-<table>
-<tr>
-<td width="50%" align="center">
-
-### 💬 Telegram 交流群
-
-<img src="./static/qrcode/diabao.JPG" width="180" alt="Telegram群二維碼">
-
-🔗 **[點擊加入 Telegram](https://t.me/+LK0JuqLxjmk0ZjRh)**
-- 成員數量: 203+ 位用戶
-- 即時更新通知
-- 技術問題解答
-- 使用經驗分享
-
-</td>
-<td width="33%" align="center">
-
-### 💼 微信付費專業群
-
-<img src="https://raw.githubusercontent.com/WeChatPadPro/WeChatPadPro/refs/heads/main/static/qrcode/%E5%9B%BE%E7%89%87_20250619211139.jpg" width="180" alt="微信付費入群二維碼">
-
-🔒 **掃碼付費加入專業交流群**
-- VIP技術支持
-- 專屬功能體驗
-- 優先解決問題
-- 高級使用技巧分享
-</td>
-<td width="50%" align="center">
-
-### 🔔 釘釘交流群
-
-<img src="./static/qrcode/IMG_3817.JPG" width="180" alt="釘釘群二維碼">
-
-🔗 **[點擊加入釘釘](https://qr.dingtalk.com/action/joingroup?code=v1,k1,6uLDgyJodWIXoxwdwF3bYlv1GRj5uoC8waI6Z4PtIi0=&_dt_no_comment=1&origin=11)**
-- 技術討論
-- 問題解答
-- 使用經驗分享
-
-</td>
-</tr>
-</table>
-
----
-
-## 💰 贊助支持
-
-<div align="center">
-  <br>
-  <img src="https://upload.wikimedia.org/wikipedia/commons/b/ba/Stripe_Logo%2C_revised_2016.svg" width="180px" alt="Stripe Logo"/>
-  <h3>您的支持是我們持續更新的動力</h3>
-
-  <a href="https://book.stripe.com/00w6oHbPkc7D1rn0iJ0Jq06">
-    <img src="https://img.shields.io/badge/-%F0%9F%92%B0%20%E9%BB%9E%E6%93%8A%E8%B4%8A%E5%8A%A9-00BB00?style=for-the-badge" height="60" width="400" alt="點擊贊助" />
-  </a>
-  <br><br>
-</div>
-
-<table>
-<tr>
-<td width="70%">
-
-### 🌟 成為贊助者可獲得
-- ✅ **優先技術支援** - 獲得開發者直接回應
-- ✅ **新功能優先體驗** - 提前體驗最新功能
-- ✅ **客製化需求支援** - 您的需求將被優先考慮
-- ✅ **企業級多帳號解決方案** - 適合商業用戶
-- ✅ **高級API支援** - 更多高級介面調用能力
-
-</td>
-<td width="30%" align="center">
-<br>
-<h3>立即行動</h3>
-<a href="https://book.stripe.com/00w6oHbPkc7D1rn0iJ0Jq06">
-  <img src="https://img.shields.io/badge/Stripe-支付-635BFF?style=for-the-badge&logo=stripe&logoColor=white" />
-</a>
-<br><br>
-<p>安全支付 · 即時開通</p>
-</td>
-</tr>
-</table>
-
-> 💡 **提示**: 完成贊助後，請保留交易號並聯繫我們獲取贊助者特權
-
 ---
 ## 📝 功能特性
 
 WeChatPadPro 是基於 WeChat Pad 協議的高級 WeChat 管理工具，支援以下功能：
 
+### 🔐 **微信登录验证码API功能** ⭐ **重点功能**
+
+#### 1. **多种登录方式支持**
+- ✅ **二维码登录** - 支持获取登录二维码，绕过验证码流程
+- ✅ **验证码登录** - 自动处理验证码提交，无需手动获取ticket
+- ✅ **短信登录** - 支持短信验证码登录方式
+- ✅ **设备登录** - 支持A16数据登录和设备ID登录
+
+#### 2. **自动验证码处理**
+- ✅ **自动获取ticket** - 系统自动从Redis或状态缓存中获取ticket
+- ✅ **自动生成data62** - 如果data62为空，系统会自动根据设备信息生成
+- ✅ **多重数据源** - 从Redis、状态缓存、用户信息、连接管理器等多个来源获取ticket
+- ✅ **智能参数验证** - 自动检查必要参数，提供友好错误提示
+
+#### 3. **实时状态检测**
+- ✅ **登录状态监控** - 实时检测扫码状态和登录进度
+- ✅ **验证码状态跟踪** - 自动识别是否需要验证码
+- ✅ **连接健康检查** - 实时监控连接状态，自动检测连接健康度
+- ✅ **心跳监控** - 增加心跳时间记录，超过10秒无心跳认为连接不健康
+
+#### 4. **RabbitMQ消息队列支持**
+- ✅ **智能重连机制** - 只在连接确实断开时才重连，避免频繁重连
+- ✅ **连接健康检查** - 实时监控连接状态，自动检测连接健康度
+- ✅ **并发安全** - 使用互斥锁确保重连过程的线程安全
+- ✅ **消息持久化** - 确保消息在服务器重启后不丢失
+
+#### 5. **多账号管理**
+- ✅ **多账号并行** - 支持同时管理多个微信账号
+- ✅ **账号隔离** - 每个账号独立运行，互不影响
+- ✅ **统一管理** - 通过统一接口管理所有账号状态
+
+#### 6. **自动Token刷新**
+- ✅ **自动刷新** - 系统自动检测并刷新过期的Token
+- ✅ **无缝切换** - Token刷新过程中不影响正常使用
+- ✅ **状态同步** - 刷新后自动同步所有相关状态
+
+### 🔄 **API接口列表**
+
+#### 登录相关接口
+- `POST /api/login/qr/newx` - 获取微信登录二维码（绕过验证码）
+- `POST /api/login/AutoVerificationcode` - 自动处理验证码提交
+- `GET /api/login/CheckLoginStatus` - 检测扫码登录状态
+- `POST /api/login/verify/auto` - 自动处理验证码（推荐）
+- `POST /api/login/verify/manual` - 手动处理验证码
+
+#### 状态检测接口
+- `GET /api/login/GetLoginStatus` - 获取在线状态
+- `GET /api/login/GetInItStatus` - 初始化状态
+- `GET /api/login/CheckCanSetAlias` - 检测微信登录环境
+
+#### 设备管理接口
+- `POST /api/login/DeviceLogin` - 设备登录
+- `POST /api/login/A16Login` - A16数据登录
+- `POST /api/login/SmsLogin` - 短信登录
+
+---
+
+### 🔹 基礎功能
+
 <table>
 <tr>
 <td width="50%" valign="top">
 
-### 🔹 基礎功能
+#### 💬 **訊息收發**
+- 文字、圖片、名片、動圖、檔案
 
-- 💬 **訊息收發** - 文字、圖片、名片、動圖、檔案
-- 👥 **好友管理** - 新增、刪除、清理殭屍粉
-- 🔄 **朋友圈互動** - 發布、點讚、評論
-- 💲 **WeChat 支付** - 轉帳、紅包
-- 🔖 **小程式和名片分享**
-- 📇 **通訊錄好友新增**
-- ⭐ **WeChat 收藏**
-- 🏷️ **標籤管理**
+#### 👥 **好友管理**
+- 新增、刪除、清理殭屍粉
+
+#### 🔄 **朋友圈互動**
+- 發布、點讚、評論
+
+#### 💲 **WeChat 支付**
+- 轉帳、紅包
 
 </td>
 <td width="50%" valign="top">
+
+#### 🔖 **小程式和名片分享**
+#### 📇 **通訊錄好友新增**
+#### ⭐ **WeChat 收藏**
+#### 🏷️ **標籤管理**
+
+</td>
+</tr>
+</table>
 
 ### 🔹 增強功能
 
@@ -287,14 +348,196 @@ WeChatPadPro 是基於 WeChat Pad 協議的高級 WeChat 管理工具，支援�
     - 建群、拉人、踢人、邀請成員
     - 群公告發布、修改群名稱
 
-</td>
-</tr>
-</table>
+---
+
+## 📦 系統包下載
+
+<div align="center">
+  <h3>🚀 最新版本系統包</h3>
+  <p>支持多平台、多架構的系統包下載</p>
+  
+  <a href="https://github.com/WeChatPadPro/WeChatPadPro/releases">
+    <img src="https://img.shields.io/badge/📦-下載最新版本-00BB00?style=for-the-badge&logo=github" alt="下載最新版本" />
+  </a>
+</div>
+
+### 🖥️ 支持平台
+
+| 操作系統 | 支持的架構 | 檔案名 |
+|---------|-----------|-------|
+| Windows | AMD64 (x86_64) | wechatpadpro_v860_20250704_windows-amd64.zip |
+| Windows | ARM64 | wechatpadpro_v860_20250704_windows-arm64.zip |
+| macOS | AMD64 (Intel) | wechatpadpro_v860_20250704_macos-amd64.zip |
+| macOS | ARM64 (M1/M2) | wechatpadpro_v860_20250704_macos-arm64.zip |
+| Linux | AMD64 (x86_64) | wechatpadpro_v860_20250704_linux-amd64.zip |
+| Linux | ARM64 | wechatpadpro_v860_20250704_linux-arm64.zip |
+| Linux | MIPS64 | wechatpadpro_v860_20250704_linux-mips64.zip |
+| Linux | MIPS64LE | wechatpadpro_v860_20250704_linux-mips64le.zip |
+| Linux | PPC64 | wechatpadpro_v860_20250704_linux-ppc64.zip |
+| Linux | PPC64LE | wechatpadpro_v860_20250704_linux-ppc64le.zip |
+| Linux | RISC-V 64 | wechatpadpro_v860_20250704_linux-riscv64.zip |
+| FreeBSD | AMD64 | wechatpadpro_v860_20250704_freebsd-amd64.zip |
+| FreeBSD | ARM64 | wechatpadpro_v860_20250704_freebsd-arm64.zip |
+| OpenBSD | AMD64 | wechatpadpro_v860_20250704_openbsd-amd64.zip |
+| OpenBSD | ARM64 | wechatpadpro_v860_20250704_openbsd-arm64.zip |
+
+### 📋 安裝說明
+
+#### 系統要求
+- 操作系統：Windows 7+、macOS 10.13+、Linux (內核 3.10+)、FreeBSD 12+、OpenBSD 6.8+
+- 記憶體：至少 2GB RAM
+- 儲存：至少 200MB 可用空間
+- 網路：穩定的互聯網連接
+
+#### 安裝步驟
+1. **下載**：根據您的操作系統和CPU架構，從上表中選擇對應的壓縮包下載
+2. **解壓**：將下載的壓縮包解壓到您選擇的目錄
+3. **配置**：
+   - 修改 `config.json` 檔案，設置必要的參數
+   - 配置 `webhook_config.json` 檔案，設置Webhook相關參數
+   - 設置環境變數（可選）
+4. **運行**：
+   - Windows: 雙擊 `wechatpadpro.exe` 或在命令行中運行
+   - Linux/macOS/BSD: 執行 `./wechatpadpro`
+
+### 🔗 快速下載
+
+<div align="center">
+  <table>
+    <tr>
+      <td align="center">
+        <h4>🪟 Windows</h4>
+        <a href="https://github.com/WeChatPadPro/WeChatPadPro/releases/download/v860/wechatpadpro_v860_20250704_windows-amd64.zip">
+          <img src="https://img.shields.io/badge/Windows-x64-0078D6?style=for-the-badge&logo=windows&logoColor=white" alt="Windows x64" />
+        </a>
+        <br><br>
+        <a href="https://github.com/WeChatPadPro/WeChatPadPro/releases/download/v860/wechatpadpro_v860_20250704_windows-arm64.zip">
+          <img src="https://img.shields.io/badge/Windows-ARM64-0078D6?style=for-the-badge&logo=windows&logoColor=white" alt="Windows ARM64" />
+        </a>
+      </td>
+      <td align="center">
+        <h4>🍎 macOS</h4>
+        <a href="https://github.com/WeChatPadPro/WeChatPadPro/releases/download/v860/wechatpadpro_v860_20250704_macos-amd64.zip">
+          <img src="https://img.shields.io/badge/macOS-Intel-000000?style=for-the-badge&logo=macos&logoColor=white" alt="macOS Intel" />
+        </a>
+        <br><br>
+        <a href="https://github.com/WeChatPadPro/WeChatPadPro/releases/download/v860/wechatpadpro_v860_20250704_macos-arm64.zip">
+          <img src="https://img.shields.io/badge/macOS-Apple_Silicon-000000?style=for-the-badge&logo=macos&logoColor=white" alt="macOS Apple Silicon" />
+        </a>
+      </td>
+      <td align="center">
+        <h4>🐧 Linux</h4>
+        <a href="https://github.com/WeChatPadPro/WeChatPadPro/releases/download/v860/wechatpadpro_v860_20250704_linux-amd64.zip">
+          <img src="https://img.shields.io/badge/Linux-x64-FCC624?style=for-the-badge&logo=linux&logoColor=black" alt="Linux x64" />
+        </a>
+        <br><br>
+        <a href="https://github.com/WeChatPadPro/WeChatPadPro/releases/download/v860/wechatpadpro_v860_20250704_linux-arm64.zip">
+          <img src="https://img.shields.io/badge/Linux-ARM64-FCC624?style=for-the-badge&logo=linux&logoColor=black" alt="Linux ARM64" />
+        </a>
+      </td>
+    </tr>
+  </table>
+</div>
+
+### 📝 版本說明
+
+- **v860** - 最新穩定版本，包含所有最新功能
+- **v849** - 歷史版本，仍受支持
+- **開發版** - 包含實驗性功能，僅供測試使用
+
+### 🔄 更新日誌
+
+詳細的更新日誌請查看：[GitHub Releases](https://github.com/WeChatPadPro/WeChatPadPro/releases)
+
+---
+
+## 🛠️ 開發資源
+
+<div align="center">
+  <h3>🔧 開發工具和資源</h3>
+</div>
+
+### 📚 API文檔
+
+| 資源 | 鏈接 | 說明 |
+|------|------|------|
+| **Swagger UI** | [在線API文檔](https://wx.knowhub.cloud/docs/) | 完整的API接口文檔 |
+| **Postman集合** | [下載集合](./static/swagger/WeChat849.apipost.v7.json) | 可直接導入Postman |
+| **API測試工具** | [ApiPOST](https://www.apipost.cn/download.html) | 推薦的API測試工具 |
+| **在線論壇** | [Know Hub論壇](https://bbs.knowhub.cloud/) | 技術交流、問題討論、經驗分享 |
+
+### 🎯 快速開始
+
+| 教程 | 鏈接 | 難度 |
+|------|------|------|
+| **5分鐘快速上手** | [快速開始指南](./快速開始指南.md) | ⭐ |
+| **Docker部署教程** | [Docker部署](./deploy/WeChatPadPro_Docker_部署教程.md) | ⭐⭐ |
+| **API使用示例** | [API示例代碼](./API使用示例.md) | ⭐⭐ |
+| **高級功能教程** | [高級功能指南](./高級功能指南.md) | ⭐⭐⭐ |
+
+### 🔍 常見問題
+
+<div align="center">
+  <table>
+    <tr>
+      <td align="center" width="50%">
+        <h4>❓ 常見問題</h4>
+        <ul style="text-align: left;">
+          <li>如何獲取授權碼？</li>
+          <li>登錄失敗怎麼辦？</li>
+          <li>如何配置代理？</li>
+          <li>風控問題如何解決？</li>
+        </ul>
+        <a href="#-常見問題-faq">
+          <img src="https://img.shields.io/badge/查看FAQ-00BB00?style=for-the-badge" alt="查看FAQ">
+        </a>
+      </td>
+      <td align="center" width="50%">
+        <h4>🔧 故障排除</h4>
+        <ul style="text-align: left;">
+          <li>連接問題排查</li>
+          <li>驗證碼處理</li>
+          <li>性能優化</li>
+          <li>安全配置</li>
+        </ul>
+        <a href="#-故障排除">
+          <img src="https://img.shields.io/badge/故障排除-FF6B35?style=for-the-badge" alt="故障排除">
+        </a>
+      </td>
+    </tr>
+  </table>
+</div>
+
+### 📊 項目統計
+
+<div align="center">
+  <table>
+    <tr>
+      <td align="center">
+        <h4>📈 下載統計</h4>
+        <img src="https://img.shields.io/github/downloads/WeChatPadPro/WeChatPadPro/total?style=for-the-badge&color=green" alt="總下載量">
+        <br><br>
+        <img src="https://img.shields.io/github/release-date/WeChatPadPro/WeChatPadPro?style=for-the-badge&color=blue" alt="最新發布">
+      </td>
+      <td align="center">
+        <h4>🔄 開發活躍度</h4>
+        <img src="https://img.shields.io/github/commit-activity/m/WeChatPadPro/WeChatPadPro?style=for-the-badge&color=purple" alt="月度提交">
+        <br><br>
+        <img src="https://img.shields.io/github/last-commit/WeChatPadPro/WeChatPadPro?style=for-the-badge&color=orange" alt="最後提交">
+      </td>
+      <td align="center">
+        <h4>👥 社區活躍度</h4>
+        <img src="https://img.shields.io/github/issues/WeChatPadPro/WeChatPadPro?style=for-the-badge&color=red" alt="Issues">
+        <br><br>
+        <img src="https://img.shields.io/github/issues-pr/WeChatPadPro/WeChatPadPro?style=for-the-badge&color=blue" alt="Pull Requests">
+      </td>
+    </tr>
+  </table>
+</div>
 
 ---
 
 ## 📅 更新日誌 (CHANGELOG)
-## 🔄 **RabbitMQ优化更新**
 ### v1.1.0 (2025-07-27)
 ### 1. **连接管理优化**
 # RabbitMQ和登录验证码更新说明
@@ -588,12 +831,29 @@ WeChatPadPro 提供了豐富的 WeChat 功能控制命令，包括：
 
 ---
 
+## 🗺️ 開發路線圖
+
+<div align="center">
+  <h3>🚀 未來版本計劃</h3>
+</div>
+
+### 💡 社區反饋
+
+我們重視每一位用戶的建議！如果您有功能需求或改進建議，請：
+
+- 📝 [提交Issue](https://github.com/WeChatPadPro/WeChatPadPro/issues)
+- 💬 [加入討論群](https://t.me/+LK0JuqLxjmk0ZjRh)
+- ⭐ [給我們Star](https://github.com/WeChatPadPro/WeChatPadPro)
+
+---
+
 ## 📞 聯繫我們
 
 如有任何問題或建議，歡迎通過以下方式聯繫我們：
 
 - **GitHub Issues**：[提交問題](https://github.com/WeChatPadPro/WeChatPadPro/issues)
 - **Telegram 群組**：[加入討論](https://t.me/+LK0JuqLxjmk0ZjRh)
+- **Know Hub論壇**：[在線交流](https://bbs.knowhub.cloud/)
 - **知識星球**：[深度交流](https://t.zsxq.com/Ygl6l)
 
 ---
@@ -633,9 +893,7 @@ WeChatPadPro 提供了豐富的 WeChat 功能控制命令，包括：
     - 重新登入後一般可穩定使用3個月
     - 3天後基本穩定,7天後更穩定
    > ⚠️ 注意: 一個授權碼`key`僅限一個 WeChat 號使用,多帳號需生成多個授權碼
-
-![登出錯誤示例](./static/doc/logout_error.png)
-
+   
 ## 🛠️ 環境配置
 
 ### 基礎環境要求
@@ -722,19 +980,9 @@ mysql -u root -p
 
 ### 配置檔案說明
 
-1. **setting.json**
-    - debug: 是否開啟debug日誌
-    - port: 服務端口號
-    - apiVersion: API版本(如/v849)
-    - ghWxid: 引流關注的公眾號wxid
-    - adminKey: 管理介面授權KEY
-    - redisConfig:
-        - Port: Redis端口
-        - Db: Redis資料庫號
-        - Pass: Redis密碼
-    - mySqlConnectStr: MySQL連接字串
 
-2. **owner.json**
+
+1. **owner.json**
    ```json
    {
      "wxid_xxx": 1
@@ -757,7 +1005,7 @@ mysql -u root -p
     - Windows: 雙擊`wechat_service.exe`
 
 4. 獲取AuthKey
-   訪問: `http://127.0.0.1:8848/v849/login/GenAuthKey2?key=ADMIN_KEY&count=1&days=365`
+   訪問: `http://127.0.0.1:8848/login/GenAuthKey2?key=ADMIN_KEY&count=1&days=365`
 
 5. 登入操作
     - 獲取二維碼(需配置本地代理)
@@ -838,19 +1086,3 @@ mysql -u root -p
 - 介面無回應/無報錯但操作失敗
 - 接入長期自動化專案需穩定API支援
 - 合規審核與企業授權申請協助
-
-## 🧪 測試指南
-
-推薦使用[ApiPOST經典版(v7.2.X)](https://www.apipost.cn/download.html):
-
-1. 導入[WeChat849.apipost.v7.json](./static/swagger/WeChat849.apipost.v7.json)
-2. 設置環境變數:
-    - WS_URL: WebSocket基礎URL
-    - ADMIN_KEY: 管理介面KEY
-    - SOCKS5: 本地代理地址
-3. 調用介面獲取TOKEN_KEY
-
-![ApiPOST設置1](./static/doc/apipost1.png)
-
-![ApiPOST設置2](./static/doc/apipost2.png)
-

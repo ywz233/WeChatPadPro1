@@ -1,0 +1,6 @@
+﻿WeChatPadPro
+Version: ios18.61-861
+Build Time: 20250727_100008
+System: darwin
+Architecture: arm64
+Description: Mac with M1/M2 CPU

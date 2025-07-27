@@ -1,0 +1,6 @@
+﻿WeChatPadPro
+Version: ios18.61-861
+Build Time: 20250727_100008
+System: windows
+Architecture: amd64
+Description: Windows PC (64-bit)
